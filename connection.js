@@ -33,6 +33,7 @@ start = () => {
       choices: [
         "View existing customers",
         "View existing tickets",
+        "View existing materials",
         "Add new customer",
         "Add new ticket",
         "Exit"
@@ -47,6 +48,10 @@ start = () => {
         
         case "View existing tickets":
           queryAllTickets();
+          break;
+        
+        case "View existing materials":
+          queryAllMaterials();
           break;
 
         case "Add new customer":
@@ -79,6 +84,16 @@ queryAllCustomers = () => {
 //----------------------------------------List all Tickets----------------------------------
 queryAllTickets = () => {
   connection.query("SELECT t.ticketNo, t.submission_date date, c.custName, t.locationName, t.materialId, t.grossWeight, t.emptyWeight tareWeight, t.grossWeight-t.emptyWeight netWeight FROM customers c INNER JOIN tickets t ON c.custID = t.custId;", function(err, res) {
+    if(err) throw err;
+    console.log(res);
+    console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
+    start();   
+  });
+};
+
+//----------------------------------------List all Materials----------------------------------
+queryAllMaterials = () => {
+  connection.query("SELECT * FROM materials", function(err, res) {
     if(err) throw err;
     console.log(res);
     console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
