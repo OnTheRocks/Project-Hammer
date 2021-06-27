@@ -31,9 +31,9 @@ start = () => {
       type: "list",
       message: "Make a selection.",
       choices: [
-        "View existing customers",
-        "View existing tickets",
-        "View existing materials",
+        "Customers",
+        "Tickets",
+        "Materials",
         "Add new customer",
         "Add new ticket",
         "Exit"
@@ -42,15 +42,16 @@ start = () => {
 
     .then(function(answer) {
       switch (answer.Main) {
-        case "View existing customers":
-          queryAllCustomers();
+        case "Customers":
+          customers();
+          // queryAllCustomers();
           break;
         
-        case "View existing tickets":
+        case "Tickets":
           queryAllTickets();
           break;
         
-        case "View existing materials":
+        case "Materials":
           queryAllMaterials();
           break;
 
@@ -71,13 +72,68 @@ start = () => {
     });
 };
 
+//----------------------------------------Customers----------------------------------
+customers = () => {
+  inquirer
+  .prompt({
+    name: "Main",
+    type: "list",
+    message: "Make a selection.",
+    choices: [
+      "List existing customers",
+      "Select existing customer",
+      "Add new customer",
+      "Main menu",
+      "Exit"
+    ]
+  })
+
+  .then(function(answer) {
+    switch (answer.Main) {
+      case "List existing customers":
+        queryAllCustomers();
+        break;
+      
+      case "Select existing customer":
+        querySelectCustomer();
+        break;
+      
+      case "Add new customer":
+        queryAddCustomer();
+        break;
+
+      case "Main menu":
+        start();
+        break;
+
+      case "Exit":
+
+        console.log("Have a nice day.");
+        connection.end();
+        process.exit
+    }
+  });
+};
+
 //----------------------------------------List all Customers----------------------------------
 queryAllCustomers = () => {
-  connection.query("SELECT * FROM customers", function(err, res) {
+  connection.query("SELECT custName FROM customers", function(err, res) {
     if(err) throw err;
     console.log(res);
     console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
-    start();   
+    customers();   
+  });
+};
+
+//----------------------------------------Select Customer ----------------------------------
+querySelectCustomer = () => {
+  connection.query("SELECT custName FROM customers", function(err, res) {
+    if(err) throw err;
+    console.log(res);
+    console.log("There are currently", res.length, "customers in this database.")
+    console.log(custName)
+    console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
+    customers();   
   });
 };
 
