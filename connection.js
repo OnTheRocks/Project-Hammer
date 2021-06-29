@@ -152,7 +152,52 @@ querySelectCustomer = () => {
           switch (answer.selectCustomer) {
           case names[i]:
             console.log(data[i]);
-            customers();
+
+            inquirer
+            .prompt({
+              name: "custOptions",
+              type: "list",
+              message: "Make a selection.",
+              choices: [
+                "Edit customer",
+                "Delete customer",
+                "Main Menu",
+                "Exit"
+              ]
+            })
+
+            .then(function(answer) {
+              switch (answer.custOptions) {
+                case "Edit customer":
+                  queryAllCustomers();
+                  break;
+                
+                case "Delete customer":
+                  queryDeleteCustomer();
+                  break;
+
+                case "Main Menu":
+                  start();
+                  break;
+          
+                case "Exit":
+          
+                  console.log("Have a nice day.");
+                  connection.end();
+                  process.exit
+              }
+            });
+
+            queryDeleteCustomer = () => {
+              
+              connection.query("DELETE FROM customers WHERE custName = @names", function(err, res) {
+                if(err) throw err;
+                console.log(names[i], "has been deleted from the database.");
+                console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
+                start();   
+              });
+            };
+            
           }}
         });
         
