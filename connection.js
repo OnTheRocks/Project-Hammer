@@ -117,23 +117,71 @@ customers = () => {
 
 //----------------------------------------List all Customers----------------------------------
 queryAllCustomers = () => {
-  connection.query("SELECT custName FROM customers", function(err, res) {
+  connection.query("SELECT * FROM customers", function(err, res) {
     if(err) throw err;
-    console.log(res);
+    const names = res.map(a => a.custName);
+    console.log(names);
+    console.log(names[1]);
     console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
     customers();   
   });
 };
 
+
+
 //----------------------------------------Select Customer ----------------------------------
 querySelectCustomer = () => {
   connection.query("SELECT custName FROM customers", function(err, res) {
     if(err) throw err;
-    console.log(res);
-    console.log("There are currently", res.length, "customers in this database.")
-    console.log(custName)
-    console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
-    customers();   
+    // const names = res.map(a => a.custName);
+
+    const options = Object.assign(names)
+
+console.log(options);
+    
+    inquirer
+    .prompt({
+      name: "Select Customer",
+      type: "list",
+      message: "Make a selection.",
+      choices: [
+        names = res.map(a => a.custName),
+        "Exit"
+      ]
+    })
+
+    console.log(prompt);
+  
+    // .then(function(answer) {
+    //   switch (answer.Main) {
+    //     case "List existing customers":
+    //       queryAllCustomers();
+    //       break;
+        
+    //     case "Select existing customer":
+    //       querySelectCustomer();
+    //       break;
+        
+    //     case "Add new customer":
+    //       queryAddCustomer();
+    //       break;
+  
+    //     case "Main menu":
+    //       start();
+    //       break;
+  
+    //     case "Exit":
+  
+    //       console.log("Have a nice day.");
+    //       connection.end();
+    //       process.exit
+    //   }
+    // });
+    // console.log(res);
+    // console.log("There are currently", res.length, "customers in this database.")
+    // console.log(res[3]);
+    // console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
+    // customers();   
   });
 };
 
