@@ -76,7 +76,7 @@ start = () => {
 customers = () => {
   inquirer
   .prompt({
-    name: "Main",
+    name: "customer",
     type: "list",
     message: "Make a selection.",
     choices: [
@@ -89,7 +89,7 @@ customers = () => {
   })
 
   .then(function(answer) {
-    switch (answer.Main) {
+    switch (answer.customer) {
       case "List existing customers":
         queryAllCustomers();
         break;
@@ -131,59 +131,37 @@ queryAllCustomers = () => {
 
 //----------------------------------------Select Customer ----------------------------------
 querySelectCustomer = () => {
-  connection.query("SELECT custName FROM customers", function(err, res) {
+  connection.query("SELECT * FROM customers", function(err, res) {
     if(err) throw err;
-    // const names = res.map(a => a.custName);
+    const data = res;
+    const names = res.map(a => a.custName);
 
-    const options = Object.assign(names)
-
-console.log(options);
-    
     inquirer
     .prompt({
-      name: "Select Customer",
+      name: "selectCustomer",
       type: "list",
       message: "Make a selection.",
-      choices: [
-        names = res.map(a => a.custName),
-        "Exit"
-      ]
+      choices: names
     })
 
-    console.log(prompt);
-  
-    // .then(function(answer) {
-    //   switch (answer.Main) {
-    //     case "List existing customers":
-    //       queryAllCustomers();
-    //       break;
+ 
+    .then(function(answer) {
+
+        for (i = 0; i < names.length; i++) {
+
+          switch (answer.selectCustomer) {
+          case names[i]:
+            console.log(data[i]);
+            customers();
+          }}
+        });
         
-    //     case "Select existing customer":
-    //       querySelectCustomer();
-    //       break;
-        
-    //     case "Add new customer":
-    //       queryAddCustomer();
-    //       break;
+      });
+    }
+
+
   
-    //     case "Main menu":
-    //       start();
-    //       break;
-  
-    //     case "Exit":
-  
-    //       console.log("Have a nice day.");
-    //       connection.end();
-    //       process.exit
-    //   }
-    // });
-    // console.log(res);
-    // console.log("There are currently", res.length, "customers in this database.")
-    // console.log(res[3]);
-    // console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
-    // customers();   
-  });
-};
+
 
 //----------------------------------------List all Tickets----------------------------------
 queryAllTickets = () => {
