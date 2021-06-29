@@ -151,7 +151,7 @@ querySelectCustomer = () => {
 
           switch (answer.selectCustomer) {
           case names[i]:
-            console.log(data[i]);
+            console.log("You have chosen ", data[i]);
 
             inquirer
             .prompt({
@@ -190,14 +190,18 @@ querySelectCustomer = () => {
 
             queryDeleteCustomer = () => {
               
-              connection.query("DELETE FROM customers WHERE custName = @names", function(err, res) {
+              connection.query(`DELETE FROM customers WHERE custName = "${answer.selectCustomer}"`, function(err, res) {
                 if(err) throw err;
-                console.log(names[i], "has been deleted from the database.");
+
+                // console.log("Answer.custOptions>", answer.custOptions);
+                // console.log("Answer.selectedCustomer>", answer.selectCustomer);
+
+                console.log(answer.selectCustomer, "has been deleted from the database.");
                 console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
                 start();   
-              });
-            };
-            
+              ;
+            });
+            }
           }}
         });
         
