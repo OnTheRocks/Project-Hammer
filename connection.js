@@ -169,11 +169,15 @@ querySelectCustomer = () => {
             .then(function(answer) {
               switch (answer.custOptions) {
                 case "Edit customer":
-                  queryEditCustomer();
+                  queryEdit();
                   break;
                 
                 case "Delete customer":
                   queryDeleteCustomer();
+                  break;
+
+                case "Customer Menu":
+                  customers();
                   break;
 
                 case "Main Menu":
@@ -189,58 +193,57 @@ querySelectCustomer = () => {
             });
 
             //----------------------------------------Edit Customer ----------------------------------
-            queryEditCustomer = () => {
-
-              inquirer
-              .prompt({
-                name: "custEdit",
-                type: "list",
-                message: "Make a selection.",
-                choices: [
-                  "Edit customer's name",
-                  "Edit customer's street",
-                  "Main Menu",
-                  "Exit"
-                ]
-              })
-
-              .then(function(answer) {
-                switch (answer.custEdit) {
-                  case "Edit customer's name":
-                    queryEdit()
-                    break;
-                  case "Exit":
-                    console.log("Have a nice day.");
-                    connection.end();
-                    process.exit
-                }
-              })
             queryEdit = () => {
               console.log("Selected User => ", answer.selectCustomer)
               const oldName = answer.selectCustomer;
               inquirer
-              .prompt({
+              .prompt([
+                {
                 type: "input",
                 name: "newCustName",
                 message: "Customer's updated name?",
-              })
+              },
+                {
+                type: "input",
+                name: "newCustStreet",
+                message: "Customer's updated Street?",
+              },
+                {
+                type: "input",
+                name: "newCustCity",
+                message: "Customer's updated City?",
+              },
+                {
+                type: "input",
+                name: "newCustState",
+                message: "Customer's updated State?",
+              },
+                {
+                type: "input",
+                name: "newCustZIP",
+                message: "Customer's updated ZIP?",
+              },
+                {
+                type: "input",
+                name: "newCustNotes",
+                message: "Customer notes?",
+              },
+             ])
 
               .then(function(answer) {
                 
               
               console.log("New Name => ", answer.newCustName)
-                connection.query(`UPDATE customers SET custName = "${answer.newCustName}" WHERE custName = "${oldName}"`, function(err, res) {
+                connection.query(`UPDATE customers SET custName = "${answer.newCustName}", custStreet = "${answer.newCustStreet}",
+                CustCity = "${answer.newCustCity}", CustState = "${answer.newCustState}", CustZIP = "${answer.newCustZIP}", CustNotes = "${answer.newCustNotes}" WHERE custName = "${oldName}"`, function(err, res) {
                   if(err) throw err;
-                  console.log("Updated")
+                  console.log(oldName, "Updated to", answer.newCustName);
                   console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
-                  queryEditCustomer();
+                  querySelectCustomer();
                 })
               })
             }
-            }
-
-            
-
+          
             //----------------------------------------Delete Customer ----------------------------------
             queryDeleteCustomer = () => {
               
