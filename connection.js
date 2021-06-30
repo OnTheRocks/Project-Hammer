@@ -216,16 +216,20 @@ querySelectCustomer = () => {
                 }
               })
             queryEdit = () => {
+              console.log("Selected User => ", answer.selectCustomer)
+              const oldName = answer.selectCustomer;
               inquirer
               .prompt({
                 type: "input",
                 name: "newCustName",
                 message: "Customer's updated name?",
               })
-              
 
               .then(function(answer) {
-                connection.query(`UPDATE customers SET custName = "${answer.newCustName}" WHERE custName = "${answer.selectCustomer}"`, function(err, res) {
+                
+              
+              console.log("New Name => ", answer.newCustName)
+                connection.query(`UPDATE customers SET custName = "${answer.newCustName}" WHERE custName = "${oldName}"`, function(err, res) {
                   if(err) throw err;
                   console.log("Updated")
                   console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
