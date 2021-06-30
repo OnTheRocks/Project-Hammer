@@ -169,7 +169,7 @@ querySelectCustomer = () => {
             .then(function(answer) {
               switch (answer.custOptions) {
                 case "Edit customer":
-                  queryAllCustomers();
+                  queryEditCustomer();
                   break;
                 
                 case "Delete customer":
@@ -188,29 +188,70 @@ querySelectCustomer = () => {
               }
             });
 
+            //----------------------------------------Edit Customer ----------------------------------
+            queryEditCustomer = () => {
+
+              inquirer
+              .prompt({
+                name: "custEdit",
+                type: "list",
+                message: "Make a selection.",
+                choices: [
+                  "Edit customer's name",
+                  "Edit customer's street",
+                  "Main Menu",
+                  "Exit"
+                ]
+              })
+
+              .then(function(answer) {
+                switch (answer.custEdit) {
+                  case "Edit customer's name":
+                    queryEdit()
+                    break;
+                  case "Exit":
+                    console.log("Have a nice day.");
+                    connection.end();
+                    process.exit
+                }
+              })
+            queryEdit = () => {
+              inquirer
+              .prompt({
+                type: "input",
+                name: "newCustName",
+                message: "Customer's updated name?",
+              })
+              
+
+              .then(function(answer) {
+                connection.query(`UPDATE customers SET custName = "${answer.newCustName}" WHERE custName = "${answer.selectCustomer}"`, function(err, res) {
+                  if(err) throw err;
+                  console.log("Updated")
+                  console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+                  queryEditCustomer();
+                })
+              })
+            }
+            }
+
+            
+
+            //----------------------------------------Delete Customer ----------------------------------
             queryDeleteCustomer = () => {
               
               connection.query(`DELETE FROM customers WHERE custName = "${answer.selectCustomer}"`, function(err, res) {
                 if(err) throw err;
-
-                // console.log("Answer.custOptions>", answer.custOptions);
-                // console.log("Answer.selectedCustomer>", answer.selectCustomer);
-
                 console.log(answer.selectCustomer, "has been deleted from the database.");
                 console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>") 
                 start();   
-              ;
+              
             });
             }
           }}
-        });
-        
+        });        
       });
     }
-
-
-  
-
 
 //----------------------------------------List all Tickets----------------------------------
 queryAllTickets = () => {
