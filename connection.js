@@ -82,7 +82,6 @@ customers = () => {
     choices: [
       "List existing customers",
       "Select existing customer",
-      "Add new customer",
       "Main menu",
       "Exit"
     ]
@@ -96,10 +95,6 @@ customers = () => {
       
       case "Select existing customer":
         querySelectCustomer();
-        break;
-      
-      case "Add new customer":
-        queryAddCustomer();
         break;
 
       case "Main menu":
@@ -159,7 +154,8 @@ querySelectCustomer = () => {
               type: "list",
               message: "Make a selection.",
               choices: [
-                "Edit customer",
+                "Edit customer",                
+                "Add new customer",
                 "Delete customer",
                 "Main Menu",
                 "Exit"
@@ -170,6 +166,10 @@ querySelectCustomer = () => {
               switch (answer.custOptions) {
                 case "Edit customer":
                   queryEdit();
+                  break;            
+      
+                case "Add new customer":
+                  queryAddCustomer();
                   break;
                 
                 case "Delete customer":
