@@ -7,5 +7,5 @@ app.use(express.json());
 app.listen(5054, () => console.log("Server is running."));
 
 app.get('/wacawaca', (req, res) => {
-  console.log("Fuck Yeah!");
+  console.log("Hello World!");
 })
