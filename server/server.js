@@ -17,13 +17,13 @@ const connection = mysql.createConnection({
 //--------------------connect to the mysql server and sql database--------------------------------------
 connection.connect(error => {
   if (error) throw error;
-  console.log("Connected to", process.env.DB_NAME, ".");
+  console.log("Database", process.env.DB_NAME, connection.state);
 });
 
 app.use(express.json());
 app.use(cors());
 
-var server = app.listen(process.env.PORT, () => console.log("Server is running."));
+var server = app.listen(process.env.PORT, () => console.log("Server is running on port ", process.env.PORT, "."));
 
 app.get('/customers', (req, res) => {
   let sql = "SELECT * FROM customers";
