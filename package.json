@@ -1,0 +1,19 @@
+{
+  "name": "projecthammer",
+  "version": "1.0.0",
+  "description": "\"# Project-Hammer\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OnTheRocks/ProjectHammer.git"
+  },
+  "author": "Nathan Huber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OnTheRocks/ProjectHammer/issues"
+  },
+  "homepage": "https://github.com/OnTheRocks/ProjectHammer#readme"
+}
