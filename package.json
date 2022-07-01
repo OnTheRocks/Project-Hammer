@@ -1,7 +1,7 @@
 {
-  "name": "projecthammer",
+  "name": "ProjectHammer",
   "version": "1.0.0",
-  "description": "\"# Project-Hammer\"",
+  "description": "\"# ProjectHammer\"",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
