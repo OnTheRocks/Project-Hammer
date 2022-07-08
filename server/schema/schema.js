@@ -1,5 +1,10 @@
-const { projects,  clients, customers } = require('../sampleData');
-const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLList, GraphQLInt,  } = require('graphql');
+const { GraphQLObjectType, 
+        GraphQLString, 
+        GraphQLSchema, 
+        GraphQLID, 
+        GraphQLList, 
+        GraphQLInt, 
+        GraphQLNonNull, } = require('graphql');
 
 //Mongoose models
 const Customer = require('../models/Customer')
@@ -69,7 +74,31 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
+//Mutations
+const mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    addCustomer: {
+      type: CustomerType,
+      args: {
+        name: { type: GraphQLNonNull(GraphQLString) },
+        email: { type: GraphQLNonNull(GraphQLString) },
+        phone: { type:  GraphQLNonNull(GraphQLString)},
+      },
+      resolve(parent, args) {
+        const Customer = new Customer({
+          name: args.name,
+          email: args.email,
+          phone: args.phone,
+        });
+        return customer.save();
+      }
+    }
+  }
+});
+
 
 module.exports = new GraphQLSchema({
-  query: RootQuery
-})
+  query: RootQuery,
+  mutation
+});
