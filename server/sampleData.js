@@ -76,4 +76,38 @@ const clients = [
   },
 ];
 
-module.exports = { projects, clients };
+// Customers
+const customers = [
+  {
+    id: '1',
+    name: 'Dodge City Concrete',
+    email: 'info@dodgecityconcrete.com',
+    phone: '620.225.4351',
+  },
+  {
+    id: '2',
+    name: 'Dunlap Construction Company, Inc.',
+    email: 'blackwidow@gmail.com',
+    phone: '620.275.6719',
+  },
+  {
+    id: '3',
+    name: 'JKL Construction, Inc',
+    email: 'thor@gmail.com',
+    phone: '620.563.9382',
+  },
+  {
+    id: '4',
+    name: 'Huber Ready Mix',
+    email: 'Huber@Huber.com',
+    phone: '620.275.7601',
+  },
+  {
+    id: '5',
+    name: 'Lee Construction, Inc.',
+    email: 'lee3construction@gmail.com',
+    phone: '620.276.6811',
+  },
+];
+
+module.exports = { projects, customers, clients };
