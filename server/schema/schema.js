@@ -4,12 +4,12 @@ const { GraphQLObjectType,
         GraphQLID, 
         GraphQLList, 
         GraphQLInt, 
-        GraphQLNonNull, } = require('graphql');
+        GraphQLNonNull,
+      } = require('graphql');
 
 //Mongoose models
-const Customer = require('../models/Customer')
-const Ticket = require('../models/Ticket')
-
+const Customer = require('../models/Customer');
+const Ticket = require('../models/Ticket');
 //Tickets
 const TicketType = new GraphQLObjectType({
   name: 'Ticket',
@@ -92,6 +92,33 @@ const mutation = new GraphQLObjectType({
           phone: args.phone,
         });
         return customer.save();
+      }
+    },
+    // Add Ticket
+    addTicket: {
+      type: TicketType,
+      args: {
+        date: { type: GraphQLNonNull(GraphQLString) },
+        ticketNum: { type: GraphQLNonNull(GraphQLString) },
+        customerID: { type: GraphQLNonNull(GraphQLID) },
+        material: { type: GraphQLNonNull(GraphQLString) },
+        tareWeight: { type: GraphQLNonNull(GraphQLInt) },
+        grossWeight: { type: GraphQLNonNull(GraphQLInt) },
+        netWeight: { type: GraphQLNonNull(GraphQLInt) },
+        notes: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        const Ticket = new Ticket({
+          date: args.date,
+          ticketNum: args.ticketNum,
+          customerID: args.customerID,
+          material: args.material,
+          tareWeight: args.tareWeight,
+          grossWeight: args.grossWeight,
+          netWeight: args.netWeight,
+          notes: args.notes,
+        });
+        return ticket.save();
       }
     }
   }

@@ -15,13 +15,13 @@ const TicketSchema = new mongoose.Schema({
     type: String,
   },
   tareWeight: {
-    type: String,
+    type: Number,
   },
   grossWeight: {
-    type: String,
+    type: Number,
   },
   netWeight: {
-    type: String,
+    type: Number,
   },
   notes: {
     type: String,
