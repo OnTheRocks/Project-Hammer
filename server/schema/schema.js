@@ -12,18 +12,6 @@ const { GraphQLObjectType,
         GraphQLNonNull,
       } = require('graphql');
 
-
-      //Client Type
-const CustomerType = new GraphQLObjectType({
-  name: 'Customer',
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    email: { type: GraphQLString },
-    phone: { type: GraphQLString }
-  })
-});
-
 //Tickets
 const TicketType = new GraphQLObjectType({
   name: 'Ticket',
@@ -41,20 +29,20 @@ const TicketType = new GraphQLObjectType({
     grossWeight: { type: GraphQLString},
     netWeight: { type: GraphQLString},
     notes: { type: GraphQLString},
-  })
+  }),
 });
 
 
 //Customers
-// const CustomerType = new GraphQLObjectType({
-//   name: "Customer",
-//   fields: () => ({
-//     id: { type: GraphQLID },
-//     name: { type: GraphQLString}, 
-//     email: { type: GraphQLString},
-//     phone: { type: GraphQLString}
-//   })
-// });
+const CustomerType = new GraphQLObjectType({
+  name: "Customer",
+  fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString}, 
+    email: { type: GraphQLString},
+    phone: { type: GraphQLString},
+  }),
+});
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -62,39 +50,30 @@ const RootQuery = new GraphQLObjectType({
     tickets: {
       type: new GraphQLList(TicketType),
       resolve(parent, args) {
-        return Tickets.find();
-      }
+        return Ticket.find();
+      },
     },
     ticket: {
       type: TicketType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return Ticket.findById(args.id);
-      }
+      },
     },
-
     customers: {
       type: new GraphQLList(CustomerType),
       resolve(parent, args) {
         return Customer.find();
-      }
-    },
-    // customer: {
-    //   type: CustomerType,
-    //   args: { id: { type: GraphQLID } },
-    //   resolve(parent, args) {
-    //     return Customer.findById(parent.customerId);
-    //   }
-    // }
-    
+      },
+    },    
     customer: {
       type: CustomerType, 
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return Customer.findById(parent.customerId);
-      } 
+        return Customer.findById(args.id);
+      }, 
     },
-  }
+  },
 });
 
 //Mutations
@@ -109,7 +88,7 @@ const mutation = new GraphQLObjectType({
         phone: { type:  GraphQLNonNull(GraphQLString)},
       },
       resolve(parent, args) {
-        const Customer = new Customer({
+        const customer = new Customer({
           name: args.name,
           email: args.email,
           phone: args.phone,
@@ -131,10 +110,10 @@ const mutation = new GraphQLObjectType({
         notes: { type: GraphQLNonNull(GraphQLString) },
       },
       resolve(parent, args) {
-        const Ticket = new Ticket({
+        const ticket = new Ticket({
           date: args.date,
           ticketNum: args.ticketNum,
-          customerID: args.customerID,
+          customerID: args.customerId,
           material: args.material,
           tareWeight: args.tareWeight,
           grossWeight: args.grossWeight,
