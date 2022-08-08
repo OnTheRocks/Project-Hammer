@@ -19,7 +19,8 @@ const TicketType = new GraphQLObjectType({
     id: { type: GraphQLID },
     date: { type: GraphQLString},
     ticketNum: { type: GraphQLString},
-    customer: { type: CustomerType,
+    customer: { 
+      type: CustomerType,
       resolve(parent, args) {
         return Customer.findById(parent.customerId);
       },
@@ -102,7 +103,7 @@ const mutation = new GraphQLObjectType({
       args: {
         date: { type: GraphQLNonNull(GraphQLString) },
         ticketNum: { type: GraphQLNonNull(GraphQLString) },
-        customerID: { type: GraphQLNonNull(GraphQLID) },
+        customerId: { type: GraphQLNonNull(GraphQLID) },
         material: { type: GraphQLNonNull(GraphQLString) },
         tareWeight: { type: GraphQLNonNull(GraphQLInt) },
         grossWeight: { type: GraphQLNonNull(GraphQLInt) },
@@ -113,7 +114,7 @@ const mutation = new GraphQLObjectType({
         const ticket = new Ticket({
           date: args.date,
           ticketNum: args.ticketNum,
-          customerID: args.customerId,
+          customerId: args.customerId,
           material: args.material,
           tareWeight: args.tareWeight,
           grossWeight: args.grossWeight,

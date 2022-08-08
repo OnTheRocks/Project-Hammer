@@ -7,7 +7,7 @@ const TicketSchema = new mongoose.Schema({
   ticketNum: {
     type: String,
   },
-  customerID: {
+  customerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Customer',
   },
