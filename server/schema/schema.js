@@ -137,7 +137,19 @@ const mutation = new GraphQLObjectType({
         });
         return ticket.save();
       }
-    }
+    },
+
+    //Delete a project
+    deleteTicket: {
+      type: TicketType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Ticket.findByIdAndRemove(args.id);
+      },
+    },
+
   }
 });
 
