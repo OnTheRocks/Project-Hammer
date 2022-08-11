@@ -6,32 +6,32 @@ const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        customers: {
+        clients: {
           merge(existing, incoming) {
             return incoming;
           },
         },
-        tickets: {
+        projects: {
           merge(existing, incoming) {
-            return incoming; 
+            return incoming;
           },
         },
+      },
     },
   },
-},
 });
 
-const customer = new ApolloClient({
+const client = new ApolloClient({
   uri: 'http://localhost:5400/graphql',
   cache,
 });
 
-
 function App() {
   return (
     <>
-      <ApolloProvider customer={customer}>
+      <ApolloProvider client={client}>
         <Header />
+        <div className="con"
 
         <Customers />
       </ApolloProvider>
