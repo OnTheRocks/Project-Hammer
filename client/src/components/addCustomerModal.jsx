@@ -1,16 +1,39 @@
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { useMutation } from "@apollo/client";
-import e from "cors";
+import { GET_CUSTOMERS } from '../queries/customerQueries';
+import { ADD_CUSTOMER } from "../mutations/customerMutations";
 
 export default function AddCustomerModal() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone]  = useState('');
 
+  const [addCustomer] = useMutation(ADD_CUSTOMER, {
+    variables: { name, email, phone }, 
+    update(cache, { data: { addCustomer} }) {
+      const { customers } = cache.readQuery({ 
+        query: GET_CUSTOMERS});
+
+      cache.writeQuery({
+        query: GET_CUSTOMERS,
+        data: { customers: [...customers, addCustomer] },
+      });
+    }
+  });
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, phone);
+    
+    if (name === '' || email === "" || phone === "") {
+      return alert("Please fill in all fields");
+    }
+
+    addCustomer(name, email, phone);
+
+    setName("");
+    setEmail("");
+    setPhone("");
   };
 
   return (
