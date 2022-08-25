@@ -19,8 +19,8 @@ export default function Ticket() {
           <Link to="/" className='btn btn-light btn-sm w-25 d-inline ms-auto'>
             Back
           </Link>
-          <h1>{data.ticket.ticketNum}</h1>
-          <p>{data.ticket.id}</p>
+          <h1>Ticket #: {data.ticket.ticketNum}</h1>
+          <p>{data.ticket.date}</p>
 
           <h5 className='mt-3'>Material</h5>
           <p className='lead'>{data.ticket.material}</p>
