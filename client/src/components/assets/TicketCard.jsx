@@ -6,7 +6,7 @@ export default function TicketCard({ticket}) {
           <div className="d-flex justify-content-between align-items-center">
           <h5 className="card-title">{ticket.ticketNum}</h5>
 
-          <a className="btn btn-light" href={`/ticket/${ticket.id}`}>view</a>
+          <a className="btn btn-light" href={`/tickets/${ticket.id}`}>view</a>
           </div>
           <p className="small">Ticket ID: <strong>{ticket.id}</strong></p>
         </div>

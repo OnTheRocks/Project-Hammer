@@ -41,7 +41,7 @@ export default function AddCustomerModal() {
     
     {/* <!-- Button trigger modal --> */}
 <button type="button" 
-  className="btn btn-primary" 
+  className="btn btn-secondary" 
   data-bs-toggle="modal" 
   data-bs-target="#exampleModal"
 >

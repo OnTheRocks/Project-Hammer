@@ -13,7 +13,7 @@ code {
 }
 
 .navbar-brand {
-  color: #df3ca6;
+  color: #0fa10a;
 }
 
 .navbar-brand img {
@@ -27,21 +27,21 @@ code {
 
 .btn-primary,
 .bg-primary {
-  background-color: #df3ca6 !important;
+  background-color: #0fa10a !important;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #df3ca6;
+  background-color: #0fa10a;
   opacity: 0.9;
 }
 
 .btn-secondary {
-  background-color: #7430f9;
+  background-color: #000000;
 }
 
 .btn-secondary:hover {
-  background-color: #7430f9;
+  background-color: #000000;
   opacity: 0.9;
 }
 
