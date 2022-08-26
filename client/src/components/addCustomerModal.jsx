@@ -87,7 +87,7 @@ export default function AddCustomerModal() {
           </div>
 
           <button type="submit"
-          data-bs-dismiss="modal" className="btn btn-secondary">Submit</button>
+          data-bs-dismiss="modal" className="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
