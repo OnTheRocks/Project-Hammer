@@ -51,6 +51,8 @@ export default function AddTicketModal() {
     setNotes("");
   };
 
+  if(loading) return null;
+
   return (
     <>
     
