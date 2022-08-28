@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaListAlt, FaUser } from "react-icons/fa";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_CUSTOMERS } from '../queries/customerQueries';
 import { ADD_CUSTOMER } from "../mutations/customerMutations";
 // import { ADD_TICKET } from "../mutations/ticketMutations";
@@ -15,6 +15,9 @@ export default function AddTicketModal() {
   const [grossWeight, setGrossWeight]  = useState('');
   const [netWeight, setNetWeight]  = useState('');
   const [notes, setNotes]  = useState('');
+
+  // Get Clients for select
+  const {loading, error, data} = useQuery(GET_CUSTOMERS);
   
   // const [addTicket] = useMutation(ADD_TICKET, {
   //   variables: { date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes }, 
