@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const ADD_TICKET = gql`
   mutation AddTicket(
-    $date: String!, 
+    $date: Date!, 
     $ticketNum: String!, 
     $customerId: ID!, 
     $material: String!, 
@@ -12,16 +12,17 @@ const ADD_TICKET = gql`
     $notes: String! 
   ) {
       addTicket(
-        date: $date, 
-        ticketNum: $TicketNum, 
-        customerId: $customerId, 
-        material: $material, 
-        tareWeight: $tareWeight, 
-        grossWeight: $grossWeight, 
-        netWeight: $netWeight, 
-        notes: notes
+        date: $date
+        ticketNum: $TicketNum
+        customerId: $customerId
+        material: $material
+        tareWeight: $tareWeight 
+        grossWeight: $grossWeight 
+        netWeight: $netWeight 
+        notes: $notes
       ) {
           id
+          date
           ticketNum
           customerId {
             name

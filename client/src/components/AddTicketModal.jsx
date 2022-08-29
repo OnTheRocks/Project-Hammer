@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { FaListAlt, FaUser } from "react-icons/fa";
+import { FaListAlt } from "react-icons/fa";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_CUSTOMERS } from '../queries/customerQueries';
-import { ADD_CUSTOMER } from "../mutations/customerMutations";
 import { ADD_TICKET } from "../mutations/ticketMutations";
 import { GET_TICKETS } from "../queries/ticketQueries";
 
@@ -15,16 +14,11 @@ export default function AddTicketModal() {
   const [grossWeight, setGrossWeight]  = useState('');
   const [netWeight, setNetWeight]  = useState('');
   const [notes, setNotes]  = useState('');
-
-  // Get Clients for select
-  const {loading, error, data} = useQuery(GET_CUSTOMERS);
   
   const [addTicket] = useMutation(ADD_TICKET, {
     variables: { date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes }, 
     update(cache, { data: { addTicket} }) {
-      const { tickets } = cache.readQuery({ 
-        query: GET_TICKETS});
-
+      const { tickets } = cache.readQuery({ query: GET_TICKETS});
       cache.writeQuery({
         query: GET_TICKETS,
         data: { tickets: [...tickets, addTicket] },
@@ -32,12 +26,15 @@ export default function AddTicketModal() {
     }
   });
 
+    // Get Clients for select
+  const {loading, error, data} = useQuery(GET_CUSTOMERS);
+
   const onSubmit = (e) => {
     e.preventDefault();
     
-    // if (name === '' || email === "" || phone === "") {
-    //   return alert("Please fill in all fields");
-    // }
+    if (date === "" || ticketNum === "" || customerId === "" || material === "" || tareWeight === "" || grossWeight === "" || netWeight === "" || notes === "") {
+      return alert("Please fill in all fields");
+    }
 
     addTicket(date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes);
 
@@ -68,7 +65,10 @@ export default function AddTicketModal() {
         </div>
       </button>
 {/* <!-- Modal --> */}
-      <div className="modal fade" id="addTicketModal" tabIndex="-1" aria-labelledby="addTicketModalLabel" aria-hidden="true">
+      <div className="modal fade" 
+           id="addTicketModal"
+           aria-labelledby="addTicketModalLabel" 
+           aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -129,7 +129,7 @@ export default function AddTicketModal() {
                   <label className="form-label">Net Weight</label>
                   <input 
                     type="text"
-                    className="form-control" id="ticketNum"
+                    className="form-control" id="NetWeight"
                     value={netWeight} onChange={ (e) => setNetWeight(e.target.value) } 
                   />
                 </div>
