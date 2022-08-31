@@ -93,6 +93,18 @@ export default function AddTicketModal() {
                     value={ticketNum} onChange={ (e) => setTicketNum(e.target.value) } 
                   />
                 </div>
+                <div className="mb-3">
+                  <label className="form-label">Customer</label>
+                  <select id="customerId" className="form-select" 
+                          value={customerId} onChange={(e) => setCustomerId(e.target.value)}>
+                          <option value="">Select Customer</option>
+                          { data.customers.map((customer) => (
+                            <option key={customer.id} value={customer.id}>
+                              {customer.name} 
+                            </option>
+                          ) )}
+                  </select>
+                </div>
                 {/* <div className="mb-1">
                   <label className="form-label">Customer</label>
                   <input 
@@ -141,18 +153,7 @@ export default function AddTicketModal() {
                   </textarea>
                 </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Customer</label>
-                  <select id="customerId" className="form-select" 
-                          value={customerId} onChange={(e) => setCustomerId(e.target.value)}>
-                          <option value="">Select Customer</option>
-                          { data.customers.map((customer) => (
-                            <option key={customer.id} value={customer.id}>
-                              {customer.name} 
-                            </option>
-                          ) )}
-                  </select>
-                </div>
+                
                           
                 <button type="submit"
                 data-bs-dismiss="modal" className="btn btn-primary">Submit
