@@ -93,14 +93,14 @@ export default function AddTicketModal() {
                     value={ticketNum} onChange={ (e) => setTicketNum(e.target.value) } 
                   />
                 </div>
-                <div className="mb-1">
+                {/* <div className="mb-1">
                   <label className="form-label">Customer</label>
                   <input 
                     type="text"
                     className="form-control" id="customerId"
                     value={customerId} onChange={ (e) => setCustomerId(e.target.value) } 
                   />
-                </div>
+                </div> */}
                 <div className="mb-1">
                   <label className="form-label">Material</label>
                   <input 
@@ -112,25 +112,25 @@ export default function AddTicketModal() {
                 <div className="mb-1">
                   <label className="form-label">Tare Weight</label>
                   <input 
-                    type="text"
+                    type="number"
                     className="form-control" id="tareWeight"
-                    value={tareWeight} onChange={ (e) => setTareWeight(e.target.value) } 
+                    value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
                   />
                 </div>
                 <div className="mb-1">
                   <label className="form-label">Gross Weight</label>
                   <input 
-                    type="text"
+                    type="number"
                     className="form-control" id="grossWeight"
-                    value={grossWeight} onChange={ (e) => setGrossWeight(e.target.value) } 
+                    value={grossWeight} onChange={ (e) => setGrossWeight(e.target.valueAsNumber) } 
                   />
                 </div>
                 <div className="mb-1">
                   <label className="form-label">Net Weight</label>
                   <input 
-                    type="text"
+                    type="number"
                     className="form-control" id="NetWeight"
-                    value={netWeight} onChange={ (e) => setNetWeight(e.target.value) } 
+                    value={netWeight} onChange={ (e) => setNetWeight(e.target.valueAsNumber) } 
                   />
                 </div>
                 <div className="mb-3">
