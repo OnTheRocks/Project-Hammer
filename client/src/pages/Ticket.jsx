@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom'
 import CustomerInfo from '../components/CustomerInfo';
+import DeleteTicketBtn from '../components/DeleteTicketBtn';
 import Spinner from '../components/Spinner';
 import { GET_TICKET } from '../queries/ticketQueries';
 
@@ -26,6 +27,8 @@ export default function Ticket() {
           <p className='lead'>{data.ticket.material}</p>
 
           <CustomerInfo customer={data.ticket.customer} />
+
+          <DeleteTicketBtn ticketId={data.ticket.id} />
         </div>
       )}
     </>

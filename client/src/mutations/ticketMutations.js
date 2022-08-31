@@ -36,6 +36,14 @@ const ADD_TICKET = gql`
           notes
     }
   }
-`
+`;
 
-export { ADD_TICKET };
+const DELETE_TICKET = gql`
+  mutation DeleteTicket($id: ID!) {
+    deleteTicket(id: $id) {
+      id
+    }
+  }
+`;
+
+export { ADD_TICKET, DELETE_TICKET };
