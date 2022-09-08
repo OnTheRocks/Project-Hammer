@@ -38,6 +38,7 @@ const ADD_TICKET = gql`
   }
 `;
 
+
 const DELETE_TICKET = gql`
   mutation DeleteTicket($id: ID!) {
     deleteTicket(id: $id) {
@@ -46,4 +47,45 @@ const DELETE_TICKET = gql`
   }
 `;
 
-export { ADD_TICKET, DELETE_TICKET };
+const UPDATE_TICKET = gql`
+  mutation UpdateTicket(
+    $id: ID!
+    $date: String!, 
+    $ticketNum: String!, 
+    
+        $material: String!, 
+    $tareWeight: Int!, 
+    $grossWeight: Int!, 
+    $netWeight: Int!, 
+    $notes: String! 
+  ) {
+      updateTicket(
+        id: $id
+        date: $date
+        ticketNum: $ticketNum
+        
+        material: $material
+        tareWeight: $tareWeight 
+        grossWeight: $grossWeight 
+        netWeight: $netWeight 
+        notes: $notes
+      ) {
+          id
+          date
+          ticketNum
+          customer {
+            name
+            email
+            phone
+          }
+          material
+          tareWeight
+          grossWeight
+          netWeight
+          notes
+    }
+  }
+`;
+
+
+export { ADD_TICKET, DELETE_TICKET, UPDATE_TICKET };

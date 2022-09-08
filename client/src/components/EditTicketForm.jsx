@@ -1,7 +1,10 @@
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { UPDATE_TICKET } from "../mutations/ticketMutations";
+import { GET_TICKET } from "../queries/ticketQueries"
 
 
-export default function EditTicketForm({ticket}) {
+export default function EditTicketForm({ ticket }) {
   const [date, setDate] = useState(ticket.date);
   const [ticketNum, setTicketNum] = useState(ticket.ticketNum);
   const [customerId, setCustomerId]  = useState(ticket.customerId);
@@ -11,12 +14,20 @@ export default function EditTicketForm({ticket}) {
   const [netWeight, setNetWeight]  = useState(ticket.netWeight);
   const [notes, setNotes]  = useState(ticket.notes);
 
+  const [updateTicket] =  useMutation(UPDATE_TICKET, {
+    variables: { id: ticket.id, date, ticketNum, material, tareWeight, grossWeight, netWeight, notes }, 
+    refetchQueries: [{ query: GET_TICKET, variables: { id: ticket.id} 
+    }],
+  })
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (date === "" || ticketNum === "" || customerId === "" || material === "" || tareWeight === "" || grossWeight === "" || netWeight === "" || notes === "") {
       return alert("Please fill in all fields");
     }
+
+    updateTicket(date, ticketNum, material, tareWeight, grossWeight, netWeight, notes);
   }
 
 
@@ -99,9 +110,7 @@ export default function EditTicketForm({ticket}) {
                     className="form-control" id="notes"
                     value={notes} onChange={ (e) => setNotes(e.target.value) }> 
                   </textarea>
-                </div>
-
-                
+                </div>              
                           
                 <button type="submit"
                 data-bs-dismiss="modal" className="btn btn-primary">Submit
