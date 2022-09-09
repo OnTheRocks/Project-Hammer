@@ -45,6 +45,7 @@ const GET_TICKET = gql`
       netWeight
       notes
     }
-  }`
+  }
+  `
 
 export { GET_TICKETS, GET_TICKET};

@@ -52,7 +52,7 @@ const UPDATE_TICKET = gql`
     $id: ID!
     $date: String!, 
     $ticketNum: String!, 
-    
+    $customerId: ID!,
         $material: String!, 
     $tareWeight: Int!, 
     $grossWeight: Int!, 
@@ -63,7 +63,7 @@ const UPDATE_TICKET = gql`
         id: $id
         date: $date
         ticketNum: $ticketNum
-        
+        customerId: $customerId
         material: $material
         tareWeight: $tareWeight 
         grossWeight: $grossWeight 

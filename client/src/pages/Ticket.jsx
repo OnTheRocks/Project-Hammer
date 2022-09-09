@@ -29,7 +29,7 @@ export default function Ticket() {
 
           <CustomerInfo customer={data.ticket.customer} />
 
-          <EditTicketForm ticketId={data.ticket.id} />
+          <EditTicketForm ticket={data.ticket} />
 
           <DeleteTicketBtn ticketId={data.ticket.id} />
         </div>
