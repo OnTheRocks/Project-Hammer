@@ -139,7 +139,7 @@ const mutation = new GraphQLObjectType({
       }
     },
 
-    //Delete a project
+    //Delete a Ticket
     deleteTicket: {
       type: TicketType,
       args: {
@@ -150,7 +150,41 @@ const mutation = new GraphQLObjectType({
       },
     },
 
-  }
+
+  // Update Ticket
+  updateTicket: {
+    type: TicketType,
+    args: {
+      id: { type: GraphQLNonNull(GraphQLID) },
+      date: { type: GraphQLString },
+      ticketNum: { type: GraphQLString },
+      // customerId: { type: GraphQLID },
+      material: { type: GraphQLString },
+      tareWeight: { type: GraphQLInt },
+      grossWeight: { type: GraphQLInt },
+      netWeight: { type: GraphQLInt },
+      notes: { type: GraphQLString },
+    },
+    resolve(parent, args) {
+      return Ticket.findByIdAndUpdate(
+        args.id,
+        {
+          $set: {
+            date: args.date,
+            ticketNum: args.ticketNum,
+            // customerId: args.customerId,
+            material: args.material,
+            tareWeight: args.tareWeight,
+            grossWeight: args.grossWeight,
+            netWeight: args.netWeight,
+            notes: args.notes,
+          },
+        },
+        { new: true }
+      );
+    },
+   },
+  },
 });
 
 

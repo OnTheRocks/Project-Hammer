@@ -63,8 +63,8 @@ export default function EditTicketForm({ ticket }) {
                             </option>
                           ) )}
                   </select>
-                </div> */}
-                {/* <div className="mb-1">
+                </div>
+                <div className="mb-1">
                   <label className="form-label">Customer</label>
                   <input 
                     type="text"
