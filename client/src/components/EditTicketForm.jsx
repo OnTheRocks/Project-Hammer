@@ -100,7 +100,7 @@ export default function EditTicketForm({ ticket }) {
                   <label className="form-label">Net Weight</label>
                   <input 
                     type="number"
-                    className="form-control" id="NetWeight"
+                    className="form-control" id="netWeight"
                     value={netWeight} onChange={ (e) => setNetWeight(e.target.valueAsNumber) } 
                   />
                 </div>

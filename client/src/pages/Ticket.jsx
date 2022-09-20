@@ -28,7 +28,7 @@ export default function Ticket() {
           <p className='lead'>{data.ticket.material}</p>
           <p className='lead'>{data.ticket.grossWeight}</p>
           <p className='lead'>{data.ticket.tareWeight}</p>
-          <p className='lead'>{data.ticket.netWeight}</p>
+          <p className='lead'>({data.ticket.grossWeight} - {data.ticket.tareWeight})</p>
 
           <CustomerInfo customer={data.ticket.customer} />
 

@@ -27,8 +27,8 @@ const TicketType = new GraphQLObjectType({
     },
     material: { type: GraphQLString},
     tareWeight: { type: GraphQLInt},
-    grossWeight: { type: GraphQLString},
-    netWeight: { type: GraphQLString},
+    grossWeight: { type: GraphQLInt},
+    netWeight: { type: GraphQLInt},
     notes: { type: GraphQLString},
   }),
 });
