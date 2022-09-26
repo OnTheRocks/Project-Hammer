@@ -26,9 +26,12 @@ export default function Ticket() {
 
           <h5 className='mt-3'>Material</h5>
           <p className='lead'>{data.ticket.material}</p>
+          <h5 className='mt-3'>Gross Weight</h5>
           <p className='lead'>{data.ticket.grossWeight}</p>
+          <h5 className='mt-3'>Tare Weight</h5>
           <p className='lead'>{data.ticket.tareWeight}</p>
-          <p className='lead'>({data.ticket.grossWeight} - {data.ticket.tareWeight})</p>
+          <h5 className='mt-3'>Gross Weight</h5>
+          <p className='lead'>{data.ticket.grossWeight - data.ticket.tareWeight}</p>
 
           <CustomerInfo customer={data.ticket.customer} />
 
