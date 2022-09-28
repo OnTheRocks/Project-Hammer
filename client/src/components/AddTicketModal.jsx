@@ -30,11 +30,16 @@ export default function AddTicketModal() {
   const {loading, error, data} = useQuery(GET_CUSTOMERS);
 
   const onSubmit = (e) => {
+    
     e.preventDefault();
     
-    if (date === "" || ticketNum === "" || customerId === "" || material === "" || tareWeight === "" || grossWeight === "" || netWeight === "" || notes === "") {
+    
+    if (date === "" || ticketNum === "" || customerId === "" || material === "" || tareWeight === "" || grossWeight === "" || notes === "") {
       return alert("Please fill in all fields");
+      
     }
+
+    
 
     addTicket(date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes);
 
@@ -44,7 +49,7 @@ export default function AddTicketModal() {
     setMaterial("");
     setTareWeight("");
     setGrossWeight("");
-    setNetWeight("");
+    setNetWeight("15");
     setNotes("");
   };
 
@@ -122,14 +127,6 @@ export default function AddTicketModal() {
                   />
                 </div>
                 <div className="mb-1">
-                  <label className="form-label">Tare Weight</label>
-                  <input 
-                    type="number"
-                    className="form-control" id="tareWeight"
-                    value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
-                  />
-                </div>
-                <div className="mb-1">
                   <label className="form-label">Gross Weight</label>
                   <input 
                     type="number"
@@ -138,11 +135,20 @@ export default function AddTicketModal() {
                   />
                 </div>
                 <div className="mb-1">
+                  <label className="form-label">Tare Weight</label>
+                  <input 
+                    type="number"
+                    className="form-control" id="tareWeight"
+                    value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
+                  />
+                </div>
+                <div className="mb-1" >
                   <label className="form-label">Net Weight</label>
                   <input 
                     type="number"
                     className="form-control" id="NetWeight"
-                    value={netWeight} onChange={ (e) => setNetWeight(e.target.valueAsNumber) } 
+                    value={netWeight} onChange={ (e) => setNetWeight(grossWeight - tareWeight) } 
+                    
                   />
                 </div>
                 <div className="mb-3">
@@ -152,9 +158,6 @@ export default function AddTicketModal() {
                     value={notes} onChange={ (e) => setNotes(e.target.value) }> 
                   </textarea>
                 </div>
-
-                
-                          
                 <button type="submit"
                 data-bs-dismiss="modal" className="btn btn-primary">Submit
                 </button>
