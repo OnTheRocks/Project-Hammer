@@ -49,7 +49,7 @@ export default function AddTicketModal() {
     setMaterial("");
     setTareWeight("");
     setGrossWeight("");
-    setNetWeight("15");
+    setNetWeight("");
     setNotes("");
   };
 
@@ -141,16 +141,24 @@ export default function AddTicketModal() {
                     className="form-control" id="tareWeight"
                     value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
                   />
+                  
+
                 </div>
                 <div className="mb-1" >
                   <label className="form-label">Net Weight</label>
                   <input 
                     type="number"
                     className="form-control" id="NetWeight"
-                    value={netWeight} onChange={ (e) => setNetWeight(grossWeight - tareWeight) } 
+                    // readOnly
+                    
+                    value={grossWeight - tareWeight} 
+                    onInput={ (e) => setNetWeight(e.target.valueAsNumber) }
                     
                   />
                 </div>
+
+
+
                 <div className="mb-3">
                   <label className="form-label">Notes</label>
                   <textarea
