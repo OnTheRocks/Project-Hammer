@@ -3,6 +3,7 @@ import { useState } from "react";
 import { UPDATE_TICKET } from "../mutations/ticketMutations";
 import { GET_TICKET } from "../queries/ticketQueries"
 
+const moment = require('moment');
 
 export default function EditTicketForm({ ticket }) {
   const [date, setDate] = useState(ticket.date);
@@ -41,7 +42,7 @@ export default function EditTicketForm({ ticket }) {
                   <input 
                     type="text"
                     className="form-control" id="date"
-                    value={date} onChange={ (e) => setDate(e.target.value) } 
+                    value={moment(date).format("MM-DD-YYYY")} onChange={ (e) => setDate(e.target.value) } 
                   />
                 </div>
                 <div className="mb-1">

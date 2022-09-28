@@ -91,8 +91,9 @@ export default function AddTicketModal() {
                   />
                 </div>
                 <div className="mb-1">
-                  <label className="form-label">Ticket #</label>
                   <input 
+                  placeholder="Ticket #"
+                  //  className="form-label"
                     type="text"
                     className="form-control" id="ticketNum"
                     value={ticketNum} onChange={ (e) => setTicketNum(e.target.value) } 

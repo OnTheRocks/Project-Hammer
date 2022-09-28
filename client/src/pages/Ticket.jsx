@@ -6,6 +6,8 @@ import EditTicketForm from '../components/EditTicketForm';
 import Spinner from '../components/Spinner';
 import { GET_TICKET } from '../queries/ticketQueries';
 
+const moment = require('moment');
+
 export default function Ticket() {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_TICKET,
@@ -23,6 +25,7 @@ export default function Ticket() {
           </Link>
           <h1>Ticket #: {data.ticket.ticketNum}</h1>
           <p>{data.ticket.date}</p>
+          <p>{moment(data.ticket.date).format("MM-DD-YYYY")}</p>
 
           <h5 className='mt-3'>Material</h5>
           <p className='lead'>{data.ticket.material}</p>
