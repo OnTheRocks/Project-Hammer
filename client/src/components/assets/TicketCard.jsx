@@ -11,7 +11,7 @@ export default function TicketCard({ticket}) {
 
           <a className="btn btn-light" href={`/tickets/${ticket.id}`}>view</a>
           </div>
-          <p className="small">Ticket ID: <strong>{ticket.id}</strong></p>
+          {/* <p className="small">Ticket ID: <strong>{ticket.id}</strong></p> */}
         </div>
       </div>
     </div>

@@ -82,28 +82,28 @@ export default function EditTicketForm({ ticket }) {
                   />
                 </div>
                 <div className="mb-1">
-                  <label className="form-label">Tare Weight</label>
-                  <input 
-                    type="number"
-                    className="form-control" id="tareWeight"
-                    value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
-                  />
-                </div>
-                <div className="mb-1">
                   <label className="form-label">Gross Weight</label>
                   <input 
                     type="number"
                     className="form-control" id="grossWeight"
                     value={grossWeight} onChange={ (e) => setGrossWeight(e.target.valueAsNumber) } 
                   />
-                </div>
+                </div>                
+                <div className="mb-1">
+                  <label className="form-label">Tare Weight</label>
+                  <input 
+                    type="number"
+                    className="form-control" id="tareWeight"
+                    value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
+                  />
+                </div>                
                 <div className="mb-3">
                   <label className="form-label">Notes</label>
                   <textarea
                     className="form-control" id="notes"
                     value={notes} onChange={ (e) => setNotes(e.target.value) }> 
                   </textarea>
-                </div>              
+                </div>             
                           
                 <button type="submit"
                 data-bs-dismiss="modal" className="btn btn-primary">Submit
