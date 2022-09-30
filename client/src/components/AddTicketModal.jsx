@@ -82,15 +82,16 @@ export default function AddTicketModal() {
             </div>
             <div className="modal-body">
               <form onSubmit={onSubmit}>
-                <div className="mb-1">
-                  <label className="form-label">Date</label>
+                <div className="mb-3">
+                  {/* <label className="form-label">Date</label> */}
                   <input 
+                    placeholder="Date"
                     type="text"
                     className="form-control" id="date"
                     value={date} onChange={ (e) => setDate(e.target.value) } 
                   />
                 </div>
-                <div className="mb-1">
+                <div className="mb-3">
                   <input 
                   placeholder="Ticket #"
                   //  className="form-label"
@@ -100,7 +101,7 @@ export default function AddTicketModal() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Customer</label>
+                  {/* <label className="form-label">Customer</label> */}
                   <select id="customerId" className="form-select" 
                           value={customerId} onChange={(e) => setCustomerId(e.target.value)}>
                           <option value="">Select Customer</option>
@@ -111,33 +112,29 @@ export default function AddTicketModal() {
                           ) )}
                   </select>
                 </div>
-                {/* <div className="mb-1">
-                  <label className="form-label">Customer</label>
+    
+                <div className="mb-3">
+                  {/* <label className="form-label">Material</label> */}
                   <input 
-                    type="text"
-                    className="form-control" id="customerId"
-                    value={customerId} onChange={ (e) => setCustomerId(e.target.value) } 
-                  />
-                </div> */}
-                <div className="mb-1">
-                  <label className="form-label">Material</label>
-                  <input 
+                    placeholder="Material"
                     type="text"
                     className="form-control" id="material"
                     value={material} onChange={ (e) => setMaterial(e.target.value) } 
                   />
                 </div>
-                <div className="mb-1">
-                  <label className="form-label">Gross Weight</label>
+                <div className="mb-3">
+                  {/* <label className="form-label">Gross Weight</label> */}
                   <input 
+                    placeholder="Gross Weight"
                     type="number"
                     className="form-control" id="grossWeight"
                     value={grossWeight} onChange={ (e) => setGrossWeight(e.target.valueAsNumber) } 
                   />
                 </div>
-                <div className="mb-1">
-                  <label className="form-label">Tare Weight</label>
-                  <input 
+                <div className="mb-3">
+                  {/* <label className="form-label">Tare Weight</label> */}
+                  <input
+                    placeholder="Tare Weight" 
                     type="number"
                     className="form-control" id="tareWeight"
                     value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
@@ -145,9 +142,10 @@ export default function AddTicketModal() {
                   
 
                 </div>
-                <div className="mb-1" >
-                  <label className="form-label">Net Weight</label>
+                <div className="mb-3" >
+                  {/* <label className="form-label">Net Weight</label> */}
                   <input 
+                    placeholder="Net Weight"
                     type="number"
                     className="form-control" id="NetWeight"
                     // readOnly
