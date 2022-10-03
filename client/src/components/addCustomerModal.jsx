@@ -5,12 +5,17 @@ import { GET_CUSTOMERS } from '../queries/customerQueries';
 import { ADD_CUSTOMER } from "../mutations/customerMutations";
 
 export default function AddCustomerModal() {
+  const [custId, setCustId] = useState('');
   const [name, setName] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [zip, setZip] = useState('');
+  const [webSite, setWebSite] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone]  = useState('');
 
   const [addCustomer] = useMutation(ADD_CUSTOMER, {
-    variables: { name, email, phone }, 
+    variables: { custId, name, street, city, zip, webSite, email, phone }, 
     update(cache, { data: { addCustomer} }) {
       const { customers } = cache.readQuery({ 
         query: GET_CUSTOMERS});
@@ -25,13 +30,19 @@ export default function AddCustomerModal() {
   const onSubmit = (e) => {
     e.preventDefault();
     
-    if (name === '' || email === "" || phone === "") {
+    if (custId === '' || name === '' || street === '' || city === '' || zip === "" || webSite === "" || email === "" || phone === "") {
       return alert("Please fill in all fields");
     }
 
-    addCustomer(name, email, phone);
+    addCustomer(custId, name, street, city, zip, webSite, email, phone);
 
+    setCustId("");
     setName("");
+    setStreet("");
+    setStreet("");
+    setCity("");
+    setZip("");
+    setWebSite("");
     setEmail("");
     setPhone("");
   };
@@ -56,17 +67,57 @@ export default function AddCustomerModal() {
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Add Client</h5>
+        <h5 className="modal-title" id="exampleModalLabel">Add Customer</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
         <form onSubmit={onSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Customer ID</label>
+            <input 
+              type="text"
+              className="form-control" id="custId"
+              value={custId} onChange={ (e) => setCustId(e.target.value) } 
+            />
+          </div>
           <div className="mb-3">
             <label className="form-label">Name</label>
             <input 
               type="text"
               className="form-control" id="name"
               value={name} onChange={ (e) => setName(e.target.value) } 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Street</label>
+            <input 
+              type="text"
+              className="form-control" id="street"
+              value={street} onChange={ (e) => setStreet(e.target.value) } 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">City</label>
+            <input 
+              type="text"
+              className="form-control" id="city"
+              value={city} onChange={ (e) => setCity(e.target.value) } 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">ZIP Code</label>
+            <input 
+              type="text"
+              className="form-control" id="zip"
+              value={zip} onChange={ (e) => setZip(e.target.value) } 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">WebSite</label>
+            <input 
+              type="text"
+              className="form-control" id="webSite"
+              value={webSite} onChange={ (e) => setWebSite(e.target.value) } 
             />
           </div>
           <div className="mb-3">
