@@ -10,6 +10,7 @@ const { GraphQLObjectType,
         GraphQLList, 
         GraphQLInt, 
         GraphQLNonNull,
+        GraphQLDeprecatedDirective,
       } = require('graphql');
 
 //Tickets
@@ -31,6 +32,19 @@ const TicketType = new GraphQLObjectType({
     netWeight: { type: GraphQLInt},
     notes: { type: GraphQLString},
   }),
+});
+
+//Materials
+const MaterialType = new GraphQLObjectType({
+  name: "Material",
+  Fields: () => ({
+    id: { type: GraphQLID },
+    matId: { type: GraphQLString},
+    name: { type: GraphQLString },
+    price: { type: GraphQLInt },
+    unit: { type: GraphQLString},
+    notes: { type: GraphQLString,}
+  }),  
 });
 
 
