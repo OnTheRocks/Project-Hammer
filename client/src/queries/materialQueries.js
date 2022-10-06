@@ -2,23 +2,12 @@ import { gql } from '@apollo/client';
 
 const GET_MATERIALS = gql`
   query getMaterials {
-    tickets {
+    materials {
       id
-      date
-      ticketNum
-      customer{
-        id
-      }
-      customer{
-        id
-        name
-        phone
-        email
-      }
-      material
-      tareWeight
-      grossWeight
-      netWeight
+      matId
+      name
+      price
+      unit
       notes
     }
   }
@@ -26,23 +15,12 @@ const GET_MATERIALS = gql`
 
 const GET_MATERIAL = gql`
   query getMaterial($id: ID!) {
-    ticket(id: $id) {
+    material(id: $id) {
       id
-      date
-      ticketNum
-      customer{
-        id
-      }
-      customer{
-        id
-        name
-        phone
-        email
-      }
-      material
-      tareWeight
-      grossWeight
-      netWeight
+      matId
+      name
+      price
+      unit
       notes
     }
   }

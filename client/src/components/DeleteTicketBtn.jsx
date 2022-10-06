@@ -17,8 +17,8 @@ export default function DeleteTicketBtn({ ticketId }) {
   })
 
   return (
-    <div className="d-flex mt-5 ms-auto">
-      <button className="classname btn btn-danger m-2" onClick={deleteTicket}>
+    <div className="d-flex mt-5">
+      <button className="btn btn-danger m-2" onClick={deleteTicket}>
         <FaTrashAlt className="icon" />Delete Ticket
       </button>
     </div>
