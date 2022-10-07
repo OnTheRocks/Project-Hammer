@@ -21,7 +21,7 @@ export default function Ticket() {
     <>
       {!loading && !error && (
         <div className="mc-auto w-75 card p-5">
-          <Link to="/" className='btn btn-outline-dark btn-sm w-25 d-inline ms-auto'>
+          <Link to="/" className='btn btn-outline-dark btn-sm d-inline ms-auto'>
             Back
           </Link>
           <h1>Ticket #: {data.ticket.ticketNum}</h1>
@@ -38,7 +38,7 @@ export default function Ticket() {
           <p className='lead'>{data.ticket.grossWeight - data.ticket.tareWeight}</p>
 
             <CustomerInfo customer={data.ticket.customer} />    
-          <div className="d-flex ">
+          <div className="d-flex gap-1 mb-4">
             <EditTicketModal ticket={data.ticket} />
             <DeleteTicketBtn ticketId={data.ticket.id} />            
           </div>
