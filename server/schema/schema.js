@@ -93,6 +93,19 @@ const RootQuery = new GraphQLObjectType({
         return Customer.findById(args.id);
       }, 
     },
+    materials: {
+      type: new GraphQLList(MaterialType),
+      resolve(parent, args) {
+        return Material.find();
+      },
+    },
+    material: {
+      type: MaterialType,
+      args: {id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Material.findById(args.id);
+      },
+    },
   },
 });
 
