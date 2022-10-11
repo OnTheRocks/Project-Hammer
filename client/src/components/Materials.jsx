@@ -15,7 +15,6 @@ export const Materials = () => {
   return <>{!loading && !error && (
     <table className='table table-hover mt-3'>
       <thead>
-      <h5>Materials</h5>
         <tr>
           <th>Name</th>
           <th>Price</th>
