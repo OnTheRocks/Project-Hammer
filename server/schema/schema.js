@@ -1,4 +1,3 @@
-//Mongoose models
 const Customer = require('../models/Customer');
 const Ticket = require('../models/Ticket');
 const Material = require('../models/Material');
@@ -38,7 +37,7 @@ const TicketType = new GraphQLObjectType({
 //Materials
 const MaterialType = new GraphQLObjectType({
   name: "Material",
-  Fields: () => ({
+  fields: () => ({
     id: { type: GraphQLID },
     matId: { type: GraphQLString},
     name: { type: GraphQLString },
@@ -97,19 +96,19 @@ const RootQuery = new GraphQLObjectType({
       }, 
     },
 
-    // materials: {
-    //   type: new GraphQLList(MaterialType),
-    //   resolve(parent, args) {
-    //     return Material.find();
-    //   },
-    // },
-    // material: {
-    //   type: MaterialType,
-    //   args: {id: { type: GraphQLID } },
-    //   resolve(parent, args) {
-    //     return Material.findById(args.id);
-    //   },
-    // },
+    materials: {
+      type: new GraphQLList(MaterialType),
+      resolve(parent, args) {
+        return Material.find();
+      },
+    },
+    material: {
+      type: MaterialType,
+      args: {id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Material.findById(args.id);
+      },
+    },
   },
 });
 
@@ -142,6 +141,27 @@ const mutation = new GraphQLObjectType({
           phone: args.phone,
         });
         return customer.save();
+      }
+    },
+    // //Add Material
+    addMaterial: {
+      type: MaterialType,
+      args: {
+    matId: { type: GraphQLString}, 
+    name: { type: GraphQLString}, 
+    price: { type: GraphQLString}, 
+    unit: { type: GraphQLString}, 
+    notes: { type: GraphQLString},
+      },
+      resolve(parent, args) {
+        const material = new Material({
+          matId: args.matId,
+          name: args.name,
+          price: args.price,
+          unit: args.unit,
+          notes: args.notes,
+        });
+        return material.save();
       }
     },
     // Delete Customer

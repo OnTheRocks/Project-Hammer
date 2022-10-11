@@ -15,12 +15,11 @@ export const Materials = () => {
   return <>{!loading && !error && (
     <table className='table table-hover mt-3'>
       <thead>
+      <h5>Materials</h5>
         <tr>
-          <th>ID</th>
           <th>Name</th>
           <th>Price</th>
           <th>Unit</th>
-          <th>Notes</th>
           <th></th>
         </tr>
       </thead>

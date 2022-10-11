@@ -8,12 +8,12 @@ const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        clients: {
+        customers: {
           merge(existing, incoming) {
             return incoming;
           },
         },
-        projects: {
+        tickets: {
           merge(existing, incoming) {
             return incoming;
           },
