@@ -1,6 +1,7 @@
 //Mongoose models
 const Customer = require('../models/Customer');
 const Ticket = require('../models/Ticket');
+const Material = require('../models/Material');
 
 
 const { GraphQLObjectType, 
@@ -67,6 +68,7 @@ const CustomerType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
+
     tickets: {
       type: new GraphQLList(TicketType),
       resolve(parent, args) {
@@ -80,6 +82,7 @@ const RootQuery = new GraphQLObjectType({
         return Ticket.findById(args.id);
       },
     },
+
     customers: {
       type: new GraphQLList(CustomerType),
       resolve(parent, args) {
@@ -93,19 +96,20 @@ const RootQuery = new GraphQLObjectType({
         return Customer.findById(args.id);
       }, 
     },
-    materials: {
-      type: new GraphQLList(MaterialType),
-      resolve(parent, args) {
-        return Material.find();
-      },
-    },
-    material: {
-      type: MaterialType,
-      args: {id: { type: GraphQLID } },
-      resolve(parent, args) {
-        return Material.findById(args.id);
-      },
-    },
+
+    // materials: {
+    //   type: new GraphQLList(MaterialType),
+    //   resolve(parent, args) {
+    //     return Material.find();
+    //   },
+    // },
+    // material: {
+    //   type: MaterialType,
+    //   args: {id: { type: GraphQLID } },
+    //   resolve(parent, args) {
+    //     return Material.findById(args.id);
+    //   },
+    // },
   },
 });
 

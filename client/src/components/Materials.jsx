@@ -10,7 +10,7 @@ export const Materials = () => {
   const { loading, error, data } = useQuery(GET_MATERIALS);
 
   if (loading) return <Spinner />;
-  if (error) return <p>Something Went Wrong</p>;
+  if (error) return <p>Something IS Wrong</p>;
 
   return <>{!loading && !error && (
     <table className='table table-hover mt-3'>

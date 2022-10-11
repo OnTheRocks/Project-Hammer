@@ -1,14 +1,14 @@
 import { useMutation } from '@apollo/client';
 import { FaTrash }  from 'react-icons/fa';
-// import { DELETE_MATERIAL } from '../mutations/materialMutations';
+import { DELETE_MATERIAL } from '../mutations/materialMutations';
 import { GET_MATERIALS } from '../queries/materialQueries';
 
 
 export default function MaterialRow({ material }) {
-  // const [deleteMaterial] = useMutation(DELETE_MATERIAL, {
-  //   variables: { id: material.id },
-  //   refetchQueries: [{ query: GET_MATERIALS}],
-  // });
+  const [deleteMaterial] = useMutation(DELETE_MATERIAL, {
+    variables: { id: material.id },
+    refetchQueries: [{ query: GET_MATERIALS}],
+  });
 
   return (
     <tr>
@@ -18,9 +18,9 @@ export default function MaterialRow({ material }) {
       <td>{ material.unit }</td>
       {/* <td>{ material.notes }</td> */}
       <td>
-        {/* <button className="btn btn-danger btn-sm" onClick={deleteMaterial}>
+        <button className="btn btn-danger btn-sm" onClick={deleteMaterial}>
           <FaTrash />
-        </button> */}
+        </button>
       </td>
     </tr>
   );

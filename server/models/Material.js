@@ -8,7 +8,7 @@ const MaterialSchema = new mongoose.Schema({
     type: String,
   },
   price: {
-    type: Double,
+    type: String,
   },
   unit: {
     type: String,   
@@ -19,4 +19,4 @@ const MaterialSchema = new mongoose.Schema({
   
 });
 
-module.exports = mongoose.model('Customer', CustomerSchema);
+module.exports = mongoose.model('Material', MaterialSchema);
