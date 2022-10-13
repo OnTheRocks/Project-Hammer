@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaListAlt } from "react-icons/fa";
+import { FaTruckMoving } from "react-icons/fa";
 import { useMutation } from "@apollo/client";
 import { ADD_MATERIAL } from "../mutations/materialMutations";
 import { GET_MATERIALS } from "../queries/materialQueries";
@@ -50,7 +50,7 @@ export default function AddMaterialModal() {
         data-bs-toggle="modal" 
         data-bs-target="#addMaterialModal">
         <div className="d-flex align-items-center">
-          <FaListAlt className="icon" />
+          <FaTruckMoving className="icon" />
           <div>Add Material</div>
         </div>
       </button>

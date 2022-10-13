@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaListAlt } from "react-icons/fa";
+import { FaFileInvoiceDollar } from "react-icons/fa";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_CUSTOMERS } from '../queries/customerQueries';
 import { ADD_TICKET } from "../mutations/ticketMutations";
@@ -65,7 +65,7 @@ export default function AddTicketModal() {
         data-bs-toggle="modal" 
         data-bs-target="#addTicketModal">
         <div className="d-flex align-items-center">
-          <FaListAlt className="icon" />
+          <FaFileInvoiceDollar className="icon" />
           <div>Add Ticket</div>
         </div>
       </button>
