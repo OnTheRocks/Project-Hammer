@@ -1,7 +1,7 @@
 import Spinner from "./Spinner";
 import { useQuery } from "@apollo/client";
 import { GET_TICKETS } from "../queries/ticketQueries";
-import TicketCard from "./assets/TicketCard";
+import TicketCard from "./TicketCard";
 
 export default function Tickets() {
   const { loading, error, data } = useQuery(GET_TICKETS);

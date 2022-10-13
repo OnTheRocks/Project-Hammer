@@ -8,14 +8,6 @@ export default function CustomerRow({ customer }) {
   const [deleteCustomer] = useMutation(DELETE_CUSTOMER, {
     variables: { id: customer.id },
     refetchQueries: [{ query: GET_CUSTOMERS}],
-    // update(cache, { data: { deleteCustomer } }) { 
-    //   const { customers } = cache.readQuery({ query: 
-    //   GET_CUSTOMERS });
-    //   cache.writeQuery({
-    //     query: GET_CUSTOMERS,
-    //     data: { customers: customers.customers.filter(customer => customer.id !== deleteCustomer.id) },
-    //   });
-    //  }
   });
 
   return (

@@ -174,6 +174,16 @@ const mutation = new GraphQLObjectType({
         return Customer.findByIdAndRemove(args.id);
       },
     },
+    // Delete Material
+    deleteMaterial: {
+      type: MaterialType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Material.findByIdAndRemove(args.id);
+      },
+    },
 
 
 

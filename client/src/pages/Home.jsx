@@ -1,5 +1,6 @@
 import AddCustomerModal from "../components/AddCustomerModal";
 import AddTicketModal from "../components/AddTicketModal";
+import AddMaterialModal from "../components/AddMaterialModal";
 import { Customers } from "../components/Customers";
 import { Materials } from "../components/Materials";
 import Tickets from "../components/Tickets";
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="d-flex gap-3 mb-4">
         <AddTicketModal />
         <AddCustomerModal />
+        <AddMaterialModal />
       </div>
       <h3>Tickets</h3>
       <Tickets />
