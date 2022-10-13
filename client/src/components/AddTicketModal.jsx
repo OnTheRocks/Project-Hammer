@@ -66,7 +66,7 @@ export default function AddTicketModal() {
         data-bs-target="#addTicketModal">
         <div className="d-flex align-items-center">
           <FaListAlt className="icon" />
-          <div>New Ticket</div>
+          <div>Add Ticket</div>
         </div>
       </button>
 {/* <!-- Modal --> */}

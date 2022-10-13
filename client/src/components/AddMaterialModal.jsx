@@ -51,7 +51,7 @@ export default function AddMaterialModal() {
         data-bs-target="#addMaterialModal">
         <div className="d-flex align-items-center">
           <FaListAlt className="icon" />
-          <div>New Material</div>
+          <div>Add Material</div>
         </div>
       </button>
 {/* <!-- Modal --> */}
