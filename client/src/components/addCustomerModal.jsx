@@ -136,16 +136,13 @@ export default function AddCustomerModal() {
               value={phone} onChange={ (e) => setPhone(e.target.value) } 
             />
           </div>
-
           <button type="submit"
           data-bs-dismiss="modal" className="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
   </div>
-</div>
-
-    
+</div>    
     </>
   )
 }
