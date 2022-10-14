@@ -143,6 +143,6 @@ export default function AddCustomerModal() {
     </div>
   </div>
 </div>    
-    </>
-  )
+</>
+ )
 }
