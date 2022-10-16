@@ -234,7 +234,7 @@ const mutation = new GraphQLObjectType({
       id: { type: GraphQLNonNull(GraphQLID) },
       date: { type: GraphQLString },
       ticketNum: { type: GraphQLString },
-      // customerId: { type: GraphQLID },
+      customerId: { type: GraphQLID },
       material: { type: GraphQLString },
       tareWeight: { type: GraphQLInt },
       grossWeight: { type: GraphQLInt },
@@ -248,7 +248,7 @@ const mutation = new GraphQLObjectType({
           $set: {
             date: args.date,
             ticketNum: args.ticketNum,
-            // customerId: args.customerId,
+            customerId: args.customerId,
             material: args.material,
             tareWeight: args.tareWeight,
             grossWeight: args.grossWeight,

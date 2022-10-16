@@ -48,3 +48,13 @@ code {
 .icon {
   margin-right: 5px;
 }
+
+
+
+
+
+td{
+  border-top: none;
+  border-bottom: none;
+  padding: 0;
+}

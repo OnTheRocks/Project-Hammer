@@ -1,7 +1,8 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { FaListAlt } from "react-icons/fa";
 import { UPDATE_TICKET } from "../mutations/ticketMutations";
+import { GET_CUSTOMERS } from "../queries/customerQueries";
 import { GET_TICKET } from "../queries/ticketQueries"
 
 const moment = require('moment');
@@ -21,6 +22,9 @@ export default function EditTicketModal({ ticket }) {
     refetchQueries: [{ query: GET_TICKET, variables: { id: ticket.id} 
     }],
   })
+
+      // Get Clients for select
+      const {data} = useQuery(GET_CUSTOMERS);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +71,7 @@ export default function EditTicketModal({ ticket }) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="editTicketModal">New Ticket</h5>
+              <h5 className="modal-title" id="editTicketModal">Update Ticket</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
@@ -88,7 +92,8 @@ export default function EditTicketModal({ ticket }) {
                     value={ticketNum} onChange={ (e) => setTicketNum(e.target.value) } 
                   />
                 </div>
-                {/* <div className="mb-3">
+
+                <div className="mb-3">
                   <label className="form-label">Customer</label>
                   <select id="customerId" className="form-select" 
                           value={customerId} onChange={(e) => setCustomerId(e.target.value)}>
@@ -100,7 +105,8 @@ export default function EditTicketModal({ ticket }) {
                           ) )}
                   </select>
                 </div>
-                <div className="mb-1">
+
+                {/* <div className="mb-1">
                   <label className="form-label">Customer</label>
                   <input 
                     type="text"
@@ -108,6 +114,7 @@ export default function EditTicketModal({ ticket }) {
                     value={customerId} onChange={ (e) => setCustomerId(e.target.value) } 
                   />
                 </div> */}
+
                 <div className="mb-1">
                   <label className="form-label">Material</label>
                   <input 

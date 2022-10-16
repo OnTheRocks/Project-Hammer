@@ -17,9 +17,9 @@ export const Materials = () => {
       <thead>
         <tr>
           <th>Name</th>
-          <th>Price</th>
-          <th>Unit</th>
-          <th></th>
+          {/* <th>Price</th> */}
+          {/* <th>Unit</th> */}
+          {/* <th></th> */}
         </tr>
       </thead>
       <tbody>
