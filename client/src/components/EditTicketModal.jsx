@@ -93,7 +93,7 @@ export default function EditTicketModal({ ticket }) {
                   />
                 </div>
 
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <label className="form-label">Customer</label>
                   <select id="customerId" className="form-select" 
                           value={customerId} onChange={(e) => setCustomerId(e.target.value)}>
@@ -104,7 +104,7 @@ export default function EditTicketModal({ ticket }) {
                             </option>
                           ) )}
                   </select>
-                </div>
+                </div> */}
 
                 {/* <div className="mb-1">
                   <label className="form-label">Customer</label>
