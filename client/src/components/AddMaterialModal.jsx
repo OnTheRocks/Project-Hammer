@@ -7,12 +7,10 @@ import { GET_MATERIALS } from "../queries/materialQueries";
 export default function AddMaterialModal() {
   const [matId, setMatId] = useState('');
   const [name, setName] = useState('');
-  const [price, setPrice]  = useState('');
-  const [unit, setUnit]  = useState('');
   const [notes, setNotes]  = useState('');
   
   const [addMaterial] = useMutation(ADD_MATERIAL, {
-    variables: { matId, name, price, unit, notes }, 
+    variables: { matId, name, notes }, 
     update(cache, { data: { addMaterial} }) {
       const { materials } = cache.readQuery({ query: GET_MATERIALS});
       cache.writeQuery({
@@ -27,19 +25,17 @@ export default function AddMaterialModal() {
     e.preventDefault();
     
     
-    if (matId === "" || name === "" || price === "" || unit === "" || notes === "") {
+    if (matId === "" || name === "" || notes === "") {
       return alert("Please fill in all fields");
       
     }
 
     
 
-    addMaterial(matId, name, price, unit, notes);
+    addMaterial(matId, name, notes);
 
     setMatId("");
     setName("");
-    setPrice("");
-    setUnit("");
     setNotes("");
   };
 
@@ -83,24 +79,6 @@ export default function AddMaterialModal() {
                     type="text"
                     className="form-control" id="name"
                     value={name} onChange={ (e) => setName(e.target.value) } 
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Price</label>
-                  <input 
-                    // placeholder="price"
-                    type="text"
-                    className="form-control" id="price"
-                    value={price} onChange={ (e) => setPrice(e.target.value) } 
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Ton/Load</label>
-                  <input 
-                    // placeholder="Unit"
-                    type="unit"
-                    className="form-control" id="unit"
-                    value={unit} onChange={ (e) => setUnit(e.target.value) } 
                   />
                 </div>
                 <div className="mb-3">

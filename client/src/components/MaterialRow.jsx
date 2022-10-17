@@ -14,9 +14,7 @@ export default function MaterialRow({ material }) {
     <tr>
       {/* <td>{ material.matId }</td> */}
       <td>{ material.name }</td>
-      {/* <td>{ material.price }</td> */}
-      {/* <td>{ material.unit }</td> */}
-      {/* <td>{ material.notes }</td> */}
+      <td>{ material.notes }</td>
       <td>
         <button className="btn btn-danger btn-sm" onClick={deleteMaterial}>
           <FaTrash />
