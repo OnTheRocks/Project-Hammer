@@ -6,8 +6,6 @@ const GET_MATERIALS = gql`
       id
       matId
       name
-      price
-      unit
       notes
     }
   }
@@ -19,8 +17,6 @@ const GET_MATERIAL = gql`
       id
       matId
       name
-      price
-      unit
       notes
     }
   }

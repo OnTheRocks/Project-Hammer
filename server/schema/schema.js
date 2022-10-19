@@ -41,8 +41,6 @@ const MaterialType = new GraphQLObjectType({
     id: { type: GraphQLID },
     matId: { type: GraphQLString},
     name: { type: GraphQLString },
-    price: { type: GraphQLInt },
-    unit: { type: GraphQLString},
     notes: { type: GraphQLString,}
   }),  
 });
@@ -148,17 +146,13 @@ const mutation = new GraphQLObjectType({
       type: MaterialType,
       args: {
     matId: { type: GraphQLString}, 
-    name: { type: GraphQLString}, 
-    price: { type: GraphQLString}, 
-    unit: { type: GraphQLString}, 
+    name: { type: GraphQLString},
     notes: { type: GraphQLString},
       },
       resolve(parent, args) {
         const material = new Material({
           matId: args.matId,
           name: args.name,
-          price: args.price,
-          unit: args.unit,
           notes: args.notes,
         });
         return material.save();
