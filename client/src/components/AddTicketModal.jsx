@@ -112,6 +112,19 @@ export default function AddTicketModal() {
                           ) )}
                   </select>
                 </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Material</label>
+                  <select id="customerId" className="form-select" 
+                          value={customerId} onChange={(e) => setCustomerId(e.target.value)}>
+                          <option value="">Select Customer</option>
+                          { data.customers.map((customer) => (
+                            <option key={customer.id} value={customer.id}>
+                              {customer.name} 
+                            </option>
+                          ) )}
+                  </select>
+                </div>
     
                 <div className="mb-3">
                   <label className="form-label">Material</label>
