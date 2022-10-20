@@ -26,7 +26,12 @@ const TicketType = new GraphQLObjectType({
         return Customer.findById(parent.customerId);
       },
     },
-    material: { type: GraphQLString},
+    material: { 
+      type: MaterialType,
+      resolve(parent, args) {
+        return Material.findById(parent.materialId);
+      },
+    },
     tareWeight: { type: GraphQLInt},
     grossWeight: { type: GraphQLInt},
     netWeight: { type: GraphQLInt},
