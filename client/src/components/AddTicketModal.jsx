@@ -4,19 +4,20 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_CUSTOMERS } from '../queries/customerQueries';
 import { ADD_TICKET } from "../mutations/ticketMutations";
 import { GET_TICKETS } from "../queries/ticketQueries";
+import { GET_MATERIALS } from "../queries/materialQueries";
 
 export default function AddTicketModal() {
   const [date, setDate] = useState('');
   const [ticketNum, setTicketNum] = useState('');
   const [customerId, setCustomerId]  = useState('');
-  const [material, setMaterial]  = useState('');
+  const [materialId, setMaterialId]  = useState('');
   const [tareWeight, setTareWeight]  = useState('');
   const [grossWeight, setGrossWeight]  = useState('');
   const [netWeight, setNetWeight]  = useState('');
   const [notes, setNotes]  = useState('');
   
   const [addTicket] = useMutation(ADD_TICKET, {
-    variables: { date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes }, 
+    variables: { date, ticketNum, customerId, materialId, tareWeight, grossWeight, netWeight, notes }, 
     update(cache, { data: { addTicket} }) {
       const { tickets } = cache.readQuery({ query: GET_TICKETS});
       cache.writeQuery({
@@ -27,26 +28,25 @@ export default function AddTicketModal() {
   });
 
     // Get Clients for select
-  const {loading, error, data} = useQuery(GET_CUSTOMERS);
-
+  const {loading, error, data} = useQuery(GET_CUSTOMERS, GET_MATERIALS);
   const onSubmit = (e) => {
     
     e.preventDefault();
     
     
-    if (date === "" || ticketNum === "" || customerId === "" || material === "" || tareWeight === "" || grossWeight === "" || notes === "") {
+    if (date === "" || ticketNum === "" || customerId === "" || materialId === "" || tareWeight === "" || grossWeight === "" || notes === "") {
       return alert("Please fill in all fields");
       
     }
 
     
 
-    addTicket(date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes);
+    addTicket(date, ticketNum, customerId, materialId, tareWeight, grossWeight, netWeight, notes);
 
     setDate("");
     setTicketNum("");
     setCustomerId("");
-    setMaterial("");
+    setMaterialId("");
     setTareWeight("");
     setGrossWeight("");
     setNetWeight("");
@@ -115,18 +115,18 @@ export default function AddTicketModal() {
 
                 <div className="mb-3">
                   <label className="form-label">Material</label>
-                  <select id="customerId" className="form-select" 
-                          value={customerId} onChange={(e) => setCustomerId(e.target.value)}>
-                          <option value="">Select Customer</option>
-                          { data.customers.map((customer) => (
-                            <option key={customer.id} value={customer.id}>
-                              {customer.name} 
+                  <select id="materialId" className="form-select" 
+                          value={materialId} onChange={(e) => setMaterialId(e.target.value)}>
+                          <option value="">Select Material</option>
+                          { data.materials.map((material) => (
+                            <option key={material.id} value={material.id}>
+                              {material.name} 
                             </option>
                           ) )} 
                   </select>
                 </div>
     
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <label className="form-label">Material</label>
                   <input 
                     // placeholder="Material"
@@ -134,7 +134,7 @@ export default function AddTicketModal() {
                     className="form-control" id="material"
                     value={material} onChange={ (e) => setMaterial(e.target.value) } 
                   />
-                </div>
+                </div> */}
                 <div className="mb-3">
                   <label className="form-label">Gross Weight</label>
                   <input 

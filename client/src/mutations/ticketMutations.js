@@ -29,7 +29,9 @@ const ADD_TICKET = gql`
             email
             phone
           }
-          material
+          material {
+            name
+          }
           tareWeight
           grossWeight
           netWeight
