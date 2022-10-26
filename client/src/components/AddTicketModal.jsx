@@ -5,6 +5,7 @@ import { GET_CUSTOMERS } from '../queries/customerQueries';
 import { ADD_TICKET } from "../mutations/ticketMutations";
 import { GET_TICKETS } from "../queries/ticketQueries";
 import { GET_MATERIALS } from "../queries/materialQueries";
+import { gql } from "@apollo/client";
 
 export default function AddTicketModal() {
   const [date, setDate] = useState('');
@@ -27,8 +28,52 @@ export default function AddTicketModal() {
     }
   });
 
-    // Get Clients for select
-  const {loading, error, data} = useQuery(GET_CUSTOMERS, GET_MATERIALS);
+  // const {loading, error, data} = useQuery(
+  //   gql`
+  //     query GET_CUSTOMERS {
+  //       first {
+  //         _id
+  //         name
+  //       }
+  //       second {
+  //         _id
+  //         name
+  //       }
+  //   }
+  
+  // `
+  // );
+
+  const {loading, error, data} = useQuery(
+    gql`
+      query Query {
+        customers {
+         
+          name
+        }
+        materials {
+          
+          name
+        }
+    }  
+  `
+  );
+
+    // Get Customers for customer selection
+  // const {loading, error, data} = useQuery(GET_CUSTOMERS);
+  // const {loading, error, data} = useQuery(GET_CUSTOMERS);
+  // const {loading, error, data} = useQuery(GET_CUSTOMERS );
+  // const query2 = useQuery(
+  //   GET_MATERIALS`
+  //     query ` );
+
+  // const query = useQuery(GET_CUSTOMERS);
+  // const query2 = useQuery(GET_MATERIALS);
+  // console.log(query.data, query2.data)
+
+  // console.log(data);
+
+
   const onSubmit = (e) => {
     
     e.preventDefault();
@@ -113,18 +158,18 @@ export default function AddTicketModal() {
                   </select>
                 </div>
 
-                {/* <div className="mb-3">
+                <div className="mb-3">
                   <label className="form-label">Material</label>
                   <select id="materialId" className="form-select" 
                           value={materialId} onChange={(e) => setMaterialId(e.target.value)}>
                           <option value="">Select Material</option>
-                          { data.materials.map((material) => (
+                          {data.materials.map((material) => (
                             <option key={material.id} value={material.id}>
                               {material.name} 
                             </option>
                           ) )} 
                   </select>
-                </div> */}
+                </div>
 
                 <div className="mb-3">
                   <label className="form-label">Gross Weight</label>
