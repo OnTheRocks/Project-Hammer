@@ -46,8 +46,8 @@ export default function AddMaterialModal() {
         data-bs-toggle="modal" 
         data-bs-target="#addMaterialModal">
         <div className="d-flex align-items-center">
-          <FaTruckMoving className="icon" />
-          <div>Add Material</div>
+          <FaTruckMoving className="icon" color= "#0fa10a" />
+          <div className="btnFont">Add Material</div>
         </div>
       </button>
 {/* <!-- Modal --> */}

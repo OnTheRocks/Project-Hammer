@@ -21,6 +21,10 @@ code {
   margin-right: 10px;
 }
 
+.btnFont {
+color: #0fa10a;
+}
+
 .btn {
   font-size: 15px;
 }

@@ -1,6 +1,9 @@
 // const moment = require('moment');
 
+
+
 export default function TicketCard({ticket}) {
+  console.log(ticket);
   return (
     <div className="col-md-6">
       <div className="card md-3 mt-2">
@@ -19,4 +22,4 @@ export default function TicketCard({ticket}) {
       </div>
     </div>
   )
-}
+ }

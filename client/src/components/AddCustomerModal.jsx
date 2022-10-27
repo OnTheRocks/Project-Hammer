@@ -57,8 +57,8 @@ export default function AddCustomerModal() {
   data-bs-target="#addCustomerModal"
 >
   <div className="d-flex align-items-center">
-    <FaUser className="icon" />
-    <div>Add Customer</div>
+    <FaUser className="icon" color= "#0fa10a" />
+    <div className="btnFont">Add Customer</div>
   </div>
 </button>
 

@@ -28,50 +28,28 @@ export default function AddTicketModal() {
     }
   });
 
-  // const {loading, error, data} = useQuery(
-  //   gql`
-  //     query GET_CUSTOMERS {
-  //       first {
-  //         _id
-  //         name
-  //       }
-  //       second {
-  //         _id
-  //         name
-  //       }
-  //   }
-  
-  // `
-  // );
 
   const {loading, error, data} = useQuery(
     gql`
       query Query {
         customers {
           id
+          custId
           name
+          webSite
         }
         materials {
           id
           name
+          notes
         }
     }  
   `
   );
 
-    // Get Customers for customer selection
-  // const {loading, error, data} = useQuery(GET_CUSTOMERS);
-  // const {loading, error, data} = useQuery(GET_CUSTOMERS);
-  // const {loading, error, data} = useQuery(GET_CUSTOMERS );
-  // const query2 = useQuery(
-  //   GET_MATERIALS`
-  //     query ` );
 
-  // const query = useQuery(GET_CUSTOMERS);
-  // const query2 = useQuery(GET_MATERIALS);
-  // console.log(query.data, query2.data)
 
-  // console.log(data);
+  console.log(data);
 
 
   const onSubmit = (e) => {
@@ -110,8 +88,8 @@ export default function AddTicketModal() {
         data-bs-toggle="modal" 
         data-bs-target="#addTicketModal">
         <div className="d-flex align-items-center">
-          <FaFileInvoiceDollar className="icon" />
-          <div>Add Ticket</div>
+          <FaFileInvoiceDollar className="icon" color= "#0fa10a" />
+          <div className="btnFont">Add Ticket</div>
         </div>
       </button>
 {/* <!-- Modal --> */}
