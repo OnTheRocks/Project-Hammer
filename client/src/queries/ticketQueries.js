@@ -15,9 +15,7 @@ const GET_TICKETS = gql`
         phone
         email
       }
-      material {
-        name
-      }
+      material 
       tareWeight
       grossWeight
       netWeight
@@ -41,9 +39,7 @@ const GET_TICKET = gql`
         phone
         email
       }
-      material {
-        name
-      }
+      material
       tareWeight
       grossWeight
       netWeight

@@ -3,7 +3,7 @@
 
 
 export default function TicketCard({ticket}) {
-  console.log(ticket);
+  // console.log(ticket);
   return (
     <div className="col-md-6">
       <div className="card md-3 mt-2">

@@ -11,9 +11,8 @@ const TicketSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Customer',
   },
-  materialId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Material',
+  material: {
+    type: String,
   },
   tareWeight: {
     type: Number,

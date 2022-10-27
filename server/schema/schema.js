@@ -26,12 +26,8 @@ const TicketType = new GraphQLObjectType({
         return Customer.findById(parent.customerId);
       },
     },
-    material: { 
-      type: MaterialType,
-      resolve(parent, args) {
-        return Material.findById(parent.materialId);
-      },
-    },
+
+    material: { type: GraphQLString},
     tareWeight: { type: GraphQLInt},
     grossWeight: { type: GraphQLInt},
     netWeight: { type: GraphQLInt},
@@ -99,19 +95,19 @@ const RootQuery = new GraphQLObjectType({
       }, 
     },
 
-    materials: {
-      type: new GraphQLList(MaterialType),
-      resolve(parent, args) {
-        return Material.find();
-      },
-    },
-    material: {
-      type: MaterialType,
-      args: {id: { type: GraphQLID } },
-      resolve(parent, args) {
-        return Material.findById(args.id);
-      },
-    },
+    // materials: {
+    //   type: new GraphQLList(MaterialType),
+    //   resolve(parent, args) {
+    //     return Material.find();
+    //   },
+    // },
+    // material: {
+    //   type: MaterialType,
+    //   args: {id: { type: GraphQLID } },
+    //   resolve(parent, args) {
+    //     return Material.findById(args.id);
+    //   },
+    // },
   },
 });
 
@@ -147,22 +143,22 @@ const mutation = new GraphQLObjectType({
       }
     },
     // //Add Material
-    addMaterial: {
-      type: MaterialType,
-      args: {
-    matId: { type: GraphQLString}, 
-    name: { type: GraphQLString},
-    notes: { type: GraphQLString},
-      },
-      resolve(parent, args) {
-        const material = new Material({
-          matId: args.matId,
-          name: args.name,
-          notes: args.notes,
-        });
-        return material.save();
-      }
-    },
+    // addMaterial: {
+    //   type: MaterialType,
+    //   args: {
+    // matId: { type: GraphQLString}, 
+    // name: { type: GraphQLString},
+    // notes: { type: GraphQLString},
+    //   },
+    //   resolve(parent, args) {
+    //     const material = new Material({
+    //       matId: args.matId,
+    //       name: args.name,
+    //       notes: args.notes,
+    //     });
+    //     return material.save();
+    //   }
+    // },
     // Delete Customer
     deleteCustomer: {
       type: CustomerType,
@@ -173,16 +169,16 @@ const mutation = new GraphQLObjectType({
         return Customer.findByIdAndRemove(args.id);
       },
     },
-    // Delete Material
-    deleteMaterial: {
-      type: MaterialType,
-      args: {
-        id: { type: GraphQLNonNull(GraphQLID) },
-      },
-      resolve(parent, args) {
-        return Material.findByIdAndRemove(args.id);
-      },
-    },
+    // // Delete Material
+    // deleteMaterial: {
+    //   type: MaterialType,
+    //   args: {
+    //     id: { type: GraphQLNonNull(GraphQLID) },
+    //   },
+    //   resolve(parent, args) {
+    //     return Material.findByIdAndRemove(args.id);
+    //   },
+    // },
 
 
 
@@ -193,7 +189,7 @@ const mutation = new GraphQLObjectType({
         date: { type: GraphQLNonNull(GraphQLString) },
         ticketNum: { type: GraphQLNonNull(GraphQLString) },
         customerId: { type: GraphQLNonNull(GraphQLID) },
-        materialId: { type: GraphQLNonNull(GraphQLID) },
+        material: { type: GraphQLNonNull(GraphQLString) },
         tareWeight: { type: GraphQLNonNull(GraphQLInt) },
         grossWeight: { type: GraphQLNonNull(GraphQLInt) },
         netWeight: { type: GraphQLNonNull(GraphQLInt) },
@@ -204,7 +200,7 @@ const mutation = new GraphQLObjectType({
           date: args.date,
           ticketNum: args.ticketNum,
           customerId: args.customerId,
-          materialId: args.materialId,
+          material: args.material,
           tareWeight: args.tareWeight,
           grossWeight: args.grossWeight,
           netWeight: args.netWeight,
@@ -234,7 +230,7 @@ const mutation = new GraphQLObjectType({
       date: { type: GraphQLString },
       ticketNum: { type: GraphQLString },
       customerId: { type: GraphQLID },
-      materialId: { type: GraphQLID },
+      material: { type: GraphQLID },
       tareWeight: { type: GraphQLInt },
       grossWeight: { type: GraphQLInt },
       netWeight: { type: GraphQLInt },
@@ -248,7 +244,7 @@ const mutation = new GraphQLObjectType({
             date: args.date,
             ticketNum: args.ticketNum,
             customerId: args.customerId,
-            materialId: args.materialId,
+            material: args.material,
             tareWeight: args.tareWeight,
             grossWeight: args.grossWeight,
             netWeight: args.netWeight,

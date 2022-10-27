@@ -5,7 +5,7 @@ const ADD_TICKET = gql`
     $date: String!, 
     $ticketNum: String!, 
     $customerId: ID!, 
-    $materialId: ID!, 
+    $material: String!, 
     $tareWeight: Int!, 
     $grossWeight: Int!, 
     $netWeight: Int!, 
@@ -15,7 +15,7 @@ const ADD_TICKET = gql`
         date: $date
         ticketNum: $ticketNum
         customerId: $customerId
-        materialId: $materialId
+        material: $material
         tareWeight: $tareWeight 
         grossWeight: $grossWeight 
         netWeight: $netWeight 
@@ -29,11 +29,7 @@ const ADD_TICKET = gql`
             email
             phone
           }
-          material {
-            id
-            name
-            notes
-          }
+          material
           tareWeight
           grossWeight
           netWeight
@@ -82,9 +78,7 @@ const UPDATE_TICKET = gql`
             email
             phone
           }
-          material {
-            name
-          }
+          material 
           tareWeight
           grossWeight
           netWeight

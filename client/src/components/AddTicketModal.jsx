@@ -4,21 +4,21 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_CUSTOMERS } from '../queries/customerQueries';
 import { ADD_TICKET } from "../mutations/ticketMutations";
 import { GET_TICKETS } from "../queries/ticketQueries";
-import { GET_MATERIALS } from "../queries/materialQueries";
+// import { GET_MATERIALS } from "../queries/materialQueries";
 import { gql } from "@apollo/client";
 
 export default function AddTicketModal() {
   const [date, setDate] = useState('');
   const [ticketNum, setTicketNum] = useState('');
   const [customerId, setCustomerId]  = useState('');
-  const [materialId, setMaterialId]  = useState('');
+  const [material, setMaterial]  = useState('');
   const [tareWeight, setTareWeight]  = useState('');
   const [grossWeight, setGrossWeight]  = useState('');
   const [netWeight, setNetWeight]  = useState('');
   const [notes, setNotes]  = useState('');
   
   const [addTicket] = useMutation(ADD_TICKET, {
-    variables: { date, ticketNum, customerId, materialId, tareWeight, grossWeight, netWeight, notes }, 
+    variables: { date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes }, 
     update(cache, { data: { addTicket} }) {
       const { tickets } = cache.readQuery({ query: GET_TICKETS});
       cache.writeQuery({
@@ -29,27 +29,28 @@ export default function AddTicketModal() {
   });
 
 
-  const {loading, error, data} = useQuery(
-    gql`
-      query Query {
-        customers {
-          id
-          custId
-          name
-          webSite
-        }
-        materials {
-          id
-          name
-          notes
-        }
-    }  
-  `
-  );
+  const {loading, error, data} = useQuery(GET_CUSTOMERS);
+  // const {loading, error, data} = useQuery(
+  //   gql`
+  //     query Query {
+  //       customers {
+  //         id
+  //         custId
+  //         name
+  //         webSite
+  //       }
+  //       materials {
+  //         id
+  //         name
+  //         notes
+  //       }
+  //   }  
+  // `
+  // );
 
 
 
-  console.log(data);
+  // console.log(data);
 
 
   const onSubmit = (e) => {
@@ -57,19 +58,19 @@ export default function AddTicketModal() {
     e.preventDefault();
     
     
-    if (date === "" || ticketNum === "" || customerId === "" || materialId === "" || tareWeight === "" || grossWeight === "" || notes === "") {
+    if (date === "" || ticketNum === "" || customerId === "" || material === "" || tareWeight === "" || grossWeight === "" || notes === "") {
       return alert("Please fill in all fields");
       
     }
 
     
 
-    addTicket(date, ticketNum, customerId, materialId, tareWeight, grossWeight, netWeight, notes);
+    addTicket(date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes);
 
     setDate("");
     setTicketNum("");
     setCustomerId("");
-    setMaterialId("");
+    setMaterial("");
     setTareWeight("");
     setGrossWeight("");
     setNetWeight("");
@@ -136,7 +137,7 @@ export default function AddTicketModal() {
                   </select>
                 </div>
 
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <label className="form-label">Material</label>
                   <select id="materialId" className="form-select" 
                           value={materialId} onChange={(e) => setMaterialId(e.target.value)}>
@@ -147,8 +148,16 @@ export default function AddTicketModal() {
                             </option>
                           ) )} 
                   </select>
-                </div>
+                </div> */}
 
+                <div className="mb-3">
+                  <label className="form-label">Material</label>
+                  <input 
+                    type="string"
+                    className="form-control" id="material"
+                    value={material} onChange={ (e) => setMaterial(e.target.value) } 
+                  />
+                </div>
                 <div className="mb-3">
                   <label className="form-label">Gross Weight</label>
                   <input 
