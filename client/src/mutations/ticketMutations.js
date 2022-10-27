@@ -30,7 +30,9 @@ const ADD_TICKET = gql`
             phone
           }
           material {
+            id
             name
+            notes
           }
           tareWeight
           grossWeight

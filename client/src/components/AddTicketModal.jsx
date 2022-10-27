@@ -48,11 +48,11 @@ export default function AddTicketModal() {
     gql`
       query Query {
         customers {
-         
+          id
           name
         }
         materials {
-          
+          id
           name
         }
     }  
