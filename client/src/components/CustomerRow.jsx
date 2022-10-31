@@ -3,7 +3,6 @@ import { FaTrash }  from 'react-icons/fa';
 import { DELETE_CUSTOMER } from '../mutations/customerMutations';
 import { GET_CUSTOMERS } from '../queries/customerQueries';
 
-
 export default function CustomerRow({ customer }) {
   const [deleteCustomer] = useMutation(DELETE_CUSTOMER, {
     variables: { id: customer.id },
