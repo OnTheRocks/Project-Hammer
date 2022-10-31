@@ -20,10 +20,10 @@ export default function Home() {
       <div className="d-flex gap-3 mb-4">
         <Customers />
       </div>
-      <h3>Materials</h3>
+      {/* <h3>Materials</h3>
       <div className="d-flex gap-3 mb-4">        
-        {/* <Materials /> */}
-      </div>
+        <Materials />
+      </div> */}
     </>
   )
 }
