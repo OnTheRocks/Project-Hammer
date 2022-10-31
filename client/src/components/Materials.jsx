@@ -3,9 +3,6 @@ import { GET_MATERIALS } from '../queries/materialQueries';
 import MaterialRow from './MaterialRow';
 import Spinner from './Spinner';
 
-
-
-
 export const Materials = () => {
   const { loading, error, data } = useQuery(GET_MATERIALS);
 

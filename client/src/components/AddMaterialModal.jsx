@@ -26,12 +26,9 @@ export default function AddMaterialModal() {
     
     
     if (matId === "" || name === "" || notes === "") {
-      return alert("Please fill in all fields");
-      
+      return alert("Please fill in all fields");      
     }
-
     
-
     addMaterial(matId, name, notes);
 
     setMatId("");
@@ -66,7 +63,6 @@ export default function AddMaterialModal() {
                 <div className="mb-3">
                   <label className="form-label">Material Id</label>
                   <input 
-                    // placeholder="Date"
                     type="text"
                     className="form-control" id="matId"
                     value={matId} onChange={ (e) => setMatId(e.target.value) } 
@@ -75,7 +71,6 @@ export default function AddMaterialModal() {
                 <div className="mb-3">
                 <label className="form-label">Name</label>
                   <input 
-                  // placeholder="Ticket #"
                     type="text"
                     className="form-control" id="name"
                     value={name} onChange={ (e) => setName(e.target.value) } 

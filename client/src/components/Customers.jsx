@@ -3,9 +3,6 @@ import { GET_CUSTOMERS } from '../queries/customerQueries';
 import CustomerRow from './CustomerRow';
 import Spinner from './Spinner';
 
-
-
-
 export const Customers = () => {
   const { loading, error, data } = useQuery(GET_CUSTOMERS);
 

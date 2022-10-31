@@ -31,12 +31,10 @@ export default function EditTicketForm({ ticket }) {
     updateTicket(date, ticketNum, material, tareWeight, grossWeight, netWeight, notes);
   }
 
-
   return (
     <div className="mt-5">
       <h3>Update Ticket Details</h3>
       <form onSubmit={ onSubmit }>
-
                 <div className="mb-1">
                   <label className="form-label">Date</label>
                   <input 

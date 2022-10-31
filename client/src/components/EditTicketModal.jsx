@@ -51,9 +51,6 @@ export default function EditTicketModal({ ticket }) {
         <FaListAlt className="icon" />Update Ticket
       </button>
     </div>
-
-
-
       {/* <button type="button" 
         className="btn btn-danger m-2" 
         data-bs-toggle="modal" 
@@ -92,7 +89,6 @@ export default function EditTicketModal({ ticket }) {
                     value={ticketNum} onChange={ (e) => setTicketNum(e.target.value) } 
                   />
                 </div>
-
                 {/* <div className="mb-3">
                   <label className="form-label">Customer</label>
                   <select id="customerId" className="form-select" 

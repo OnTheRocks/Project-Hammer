@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { DELETE_TICKET } from "../mutations/ticketMutations";
 import { GET_TICKETS } from "../queries/ticketQueries";
 
-
-
-
 export default function DeleteTicketBtn({ ticketId }) {
   const navigate = useNavigate();
 

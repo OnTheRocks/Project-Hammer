@@ -1,7 +1,5 @@
 // const moment = require('moment');
 
-
-
 export default function TicketCard({ticket}) {
   // console.log(ticket);
   return (

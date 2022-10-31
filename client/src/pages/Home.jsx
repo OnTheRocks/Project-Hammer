@@ -5,11 +5,9 @@ import { Customers } from "../components/Customers";
 // import { Materials } from "../components/Materials";
 import Tickets from "../components/Tickets";
 
-
 export default function Home() {
   return (
-    <>
-      
+    <>      
       <div className="d-flex gap-3 mb-4">
         <AddTicketModal />
         <AddCustomerModal />
@@ -23,8 +21,7 @@ export default function Home() {
         <Customers />
       </div>
       <h3>Materials</h3>
-      <div className="d-flex gap-3 mb-4">
-        
+      <div className="d-flex gap-3 mb-4">        
         {/* <Materials /> */}
       </div>
     </>

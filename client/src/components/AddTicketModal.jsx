@@ -28,7 +28,6 @@ export default function AddTicketModal() {
     }
   });
 
-
   const {loading, error, data} = useQuery(GET_CUSTOMERS);
   // const {loading, error, data} = useQuery(
   //   gql`
@@ -47,23 +46,15 @@ export default function AddTicketModal() {
   //   }  
   // `
   // );
-
-
-
   // console.log(data);
-
 
   const onSubmit = (e) => {
     
-    e.preventDefault();
-    
+    e.preventDefault();    
     
     if (date === "" || ticketNum === "" || customerId === "" || material === "" || tareWeight === "" || grossWeight === "" || notes === "") {
-      return alert("Please fill in all fields");
-      
-    }
-
-    
+      return alert("Please fill in all fields");      
+    }   
 
     addTicket(date, ticketNum, customerId, material, tareWeight, grossWeight, netWeight, notes);
 
@@ -109,7 +100,6 @@ export default function AddTicketModal() {
                 <div className="mb-3">
                   <label className="form-label">Date</label>
                   <input 
-                    // placeholder="Date"
                     type="text"
                     className="form-control" id="date"
                     value={date} onChange={ (e) => setDate(e.target.value) } 
@@ -118,7 +108,6 @@ export default function AddTicketModal() {
                 <div className="mb-3">
                 <label className="form-label">Ticket #</label>
                   <input 
-                  // placeholder="Ticket #"
                     type="text"
                     className="form-control" id="ticketNum"
                     value={ticketNum} onChange={ (e) => setTicketNum(e.target.value) } 
@@ -161,7 +150,6 @@ export default function AddTicketModal() {
                 <div className="mb-3">
                   <label className="form-label">Gross Weight</label>
                   <input 
-                    // placeholder="Gross Weight"
                     type="number"
                     className="form-control" id="grossWeight"
                     value={grossWeight} onChange={ (e) => setGrossWeight(e.target.valueAsNumber) } 
@@ -169,31 +157,21 @@ export default function AddTicketModal() {
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Tare Weight</label>
-                  <input
-                    // placeholder="Tare Weight" 
+                  <input 
                     type="number"
                     className="form-control" id="tareWeight"
                     value={tareWeight} onChange={ (e) => setTareWeight(e.target.valueAsNumber) } 
-                  />
-                  
-
+                  />           
                 </div>
                 <div className="mb-3" >
                   <label className="form-label">Net Weight</label>
                   <input 
-                    // placeholder="Net Weight"
                     type="number"
                     className="form-control" id="NetWeight"
-                    // readOnly
-                    
                     value={grossWeight - tareWeight} 
-                    onInput={ (e) => setNetWeight(e.target.valueAsNumber) }
-                    
+                    onInput={ (e) => setNetWeight(e.target.valueAsNumber) }                    
                   />
                 </div>
-
-
-
                 <div className="mb-3">
                   <label className="form-label">Notes</label>
                   <textarea

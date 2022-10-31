@@ -3,7 +3,6 @@ import { FaTrash }  from 'react-icons/fa';
 import { DELETE_MATERIAL } from '../mutations/materialMutations';
 import { GET_MATERIALS } from '../queries/materialQueries';
 
-
 export default function MaterialRow({ material }) {
   const [deleteMaterial] = useMutation(DELETE_MATERIAL, {
     variables: { id: material.id },
