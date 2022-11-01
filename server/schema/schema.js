@@ -36,15 +36,15 @@ const TicketType = new GraphQLObjectType({
 });
 
 //Materials
-const MaterialType = new GraphQLObjectType({
-  name: "Material",
-  fields: () => ({
-    id: { type: GraphQLID },
-    matId: { type: GraphQLString},
-    name: { type: GraphQLString },
-    notes: { type: GraphQLString,}
-  }),  
-});
+// const MaterialType = new GraphQLObjectType({
+//   name: "Material",
+//   fields: () => ({
+//     id: { type: GraphQLID },
+//     matId: { type: GraphQLString},
+//     name: { type: GraphQLString },
+//     notes: { type: GraphQLString,}
+//   }),  
+// });
 
 
 //Customers
@@ -230,7 +230,7 @@ const mutation = new GraphQLObjectType({
       date: { type: GraphQLString },
       ticketNum: { type: GraphQLString },
       customerId: { type: GraphQLID },
-      material: { type: GraphQLID },
+      material: { type: GraphQLString },
       tareWeight: { type: GraphQLInt },
       grossWeight: { type: GraphQLInt },
       netWeight: { type: GraphQLInt },
